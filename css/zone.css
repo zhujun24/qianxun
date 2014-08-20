@@ -1,0 +1,12 @@
+body,button,input,select,textarea,h1,h2,h3,h4,h5,h6{font-family:Microsoft YaHei,'宋体',Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}
+body{padding-top:70px;}
+#brand{font-size:26px;color:#fff;}
+.navbar-header img{margin-top:-4px;}
+.navbar a{font-size:16px;}
+#bottom{border-top:2px solid #e5e5e5;margin-top: 20px;}
+#bottom p{text-align:center;line-height:40px;margin:5px 0;}
+.img-responsive{display: block;height: auto;max-width: 100%;}
+.media{border-bottom:1px solid #ccc;padding-bottom:18px;}
+.media:last-child{border:none;}
+.media-body{font-size:15px;}
+.tab-pane{padding-top: 20px;}
