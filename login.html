@@ -35,7 +35,7 @@
                         <li><a href="zhao_info.html">招领信息</a></li>
                         <li><a href="shi_info.html">失物信息</a></li>
                         <li><a href="zone.html">个人中心</a></li>
-                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="about.html">关于</a></li>
                         <li class="active"><a href="login.html">登陆</a></li>
                         <li><a href="reg.html">注册</a></li>
                     </ul>
@@ -56,12 +56,12 @@
         <!-- Body Main -->
         <div class="container">
             <div class="col-sm-6 col-sm-offset-3">
-                <form class="form-horizontal" role="form" action="login.php">
+                <form class="form-horizontal" role="form" action="">
                   <div class="form-group">
-                    <label for="id" class="col-sm-2 control-label">学号</label>
+                    <label for="email" class="col-sm-2 control-label">邮箱</label>
                     <div class="col-sm-7">
-                      <input type="text" class="form-control" id="id" autofocus="autofocus" placeholder="学号">
-                      <span class="help-inline help">学号不正确</span>
+                      <input type="text" class="form-control" id="email" autofocus="autofocus" placeholder="邮箱">
+                      <span class="help-inline help">邮箱格式不正确</span>
                     </div>
                   </div>
                   <div class="form-group">
@@ -73,22 +73,27 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input id="remember" type="checkbox" checked="checked">记住密码
-                        </label>
-                      </div>
+                        <div class="checkbox-inline">
+                            <label>
+                                <input id="remember" type="checkbox" checked="checked">记住密码
+                            </label>
+                        </div>
+                        <div class="checkbox-inline">
+                            <label>
+                                <input id="manager" type="checkbox">管理员登陆
+                            </label>
+                        </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-7">
-                      <button id="submit" type="submit" class="btn btn-block btn-primary">登陆</button>
+                      <button id="submit" class="btn btn-block btn-primary">登陆</button>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-7">
                     <span class="help-inline pull-left">还没有账户？<a href="reg.html">立即注册</a></span>
-                    <a href="http://210.45.240.29/" class="pull-right">忘记密码？</a>
+                    <a href="#" class="pull-right">忘记密码？</a>
                     </div>
                   </div>
                 </form>

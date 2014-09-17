@@ -10,3 +10,6 @@ body{padding-top:70px;}
 .media:last-child{border:none;}
 .media-body{font-size:15px;}
 .tab-pane{padding-top: 20px;}
+.heropic{padding: 40px;margin-bottom: 20px;background:url(../images/c4.jpg) center center;background-size:cover}
+.right-info{height: 128px;padding-top: 40px;padding-left: 138px;}
+.xiugai{display: none;}

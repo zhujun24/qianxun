@@ -1,23 +1,23 @@
 $(document).ready(function (){
 
     // 学号和密码的正则表达式
-    var Idpattern = /^20[0|1][0-9]\d{4,6}$/;
+    var Emailpattern =  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var Passwordpattern = /^([a-z]|[A-Z]|[0-9]){6,12}$/;
 
     // 学号密码可以来自Cookie
-    $("#id").val($.cookie('id'));
+    $("#email").val($.cookie('email'));
     $("#password").val($.cookie('password'));
 
     // 检查Id
-    function checkId() {
-        if(!Idpattern.test($("#id").val())&&$("#id").val()!=''){
+    function checkEmail() {
+        if(!Emailpattern.test($("#email").val())&&$("#email").val()!=''){
             $(this).css('border-color','#d9534f');
             $(this).next().css('display','block');
             return false;
         } else{
             $(this).next().css('display','none');
             $(this).css('border-color','#31b0d5');
-            $.cookie('id', $("#id").val(),{expires:9999,path:'/'});
+            $.cookie('email', $("#email").val(),{expires:9999,path:'/'});
             return true;
         }
     }
@@ -43,14 +43,14 @@ $(document).ready(function (){
         $(this).css('border-color','#31b0d5');
     }
 
-    $('#id').blur(checkId);
+    $('#email').blur(checkEmail);
     $('#password').blur(checkPassword);
-    $('#id').focus(Focus);
+    $('#email').focus(Focus);
     $('#password').focus(Focus);
 
     // 登陆表单提交
     $('#submit').click(function () {
-        if ((checkId() == true)&&(checkPassword() == true)) {
+        if ((checkEmail() == true)&&(checkPassword() == true)) {
             $('#submit').html('登陆ing...');
             //密码Cookie的存储
             if ($("#remember").prop('checked')==true) {
@@ -58,6 +58,15 @@ $(document).ready(function (){
             } else{
                 $.cookie('password','');
             };
+            //判断管理员登陆
+            if ($("#manager").prop('checked')==true) {
+                alert('管理员');
+                //管理员登陆
+                $('.form-horizontal').attr("action", "login.php");
+            } else {
+                //普通用户登陆
+                $('.form-horizontal').attr("action", "login2.php");
+            }
             return true;
         } else{
             return false;
