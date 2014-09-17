@@ -2,7 +2,7 @@ $(document).ready(function (){
 
     // 表单验证的正则表达式
     var regexEnum = {
-        name:/^([a-zA-Z]|[\u4E00-\u9FA5]){1}([a-zA-Z0-9]|[\u4E00-\u9FA5]|[_]){5,15}$/,
+        name:/^([a-zA-Z]|[\u4E00-\u9FA5]){1}([a-zA-Z0-9]|[\u4E00-\u9FA5]|[_]){2,11}$/,
         password:/^([a-z]|[A-Z]|[0-9]){6,12}$/,
         phone:/^(13|15|18|17)[0-9]{9}$/,
         email:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
