@@ -1,14 +1,25 @@
 $(document).ready(function (){
+
+    //日期选择控件
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+
     // 发布表单的验证
     function checkEmpty (obj) {
         if (obj.val() == '') {
             obj.parent().parent().addClass('has-error');
-            obj.next().css('display','block');
             obj.next().next().css('display','block');
             return false;
         } else{
             obj.parent().parent().removeClass('has-error');
-            obj.next().css('display','none');
             obj.next().next().css('display','none');
             return true;
         };
@@ -16,7 +27,6 @@ $(document).ready(function (){
 
     function Focus (obj) {
         obj.parent().parent().removeClass('has-error');
-        obj.next().css('display','none');
         obj.next().next().css('display','none');
     }
 
@@ -34,11 +44,11 @@ $(document).ready(function (){
         Focus($('#place'));
     });
 
-    $('#time').blur(function () {
-        checkEmpty($('#time'));
+    $('#dtp_input1').blur(function () {
+        checkEmpty($('#dtp_input1'));
     });
-    $('#time').focus(function () {
-        Focus($('#time'));
+    $('#dtp_input1').focus(function () {
+        Focus($('#dtp_input1'));
     });
 
     // textarea验证
@@ -66,12 +76,12 @@ $(document).ready(function (){
 
     // 提交验证
     $('#submit').click(function () {
-        if ((checkEmpty($('#good')) == true)&&(checkEmpty($('#place')) == true)&&(checkEmpty($('#time')) == true)&&checkTextarea($('#textarea'))) {
+        if ((checkEmpty($('#good')) == true)&&(checkEmpty($('#place')) == true)&&(checkEmpty($('#dtp_input1')) == true)&&checkTextarea($('#textarea'))) {
             $('#submit').html('发布ing...');
             alert('可以提交');
             return true;
         } else{
-            alert('输入有误，不能提交');
+            alert('请填写所有必填项之后提交');
             return false;
         };
     });
