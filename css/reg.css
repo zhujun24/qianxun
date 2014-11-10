@@ -8,3 +8,6 @@ body{padding-top:70px;}
 .form-control-feedback{position:absolute;display:none;}
 #bottom{border-top:2px solid #e5e5e5;margin-top:20px;}
 #bottom p{text-align:center;line-height:40px;margin:5px 0;}
+#yzm-img{width: 100px;height: 34px;cursor: pointer;}
+.yzm-div{height: 34px;width: 100%;margin-top: 10px;}
+.yzm-img-click{line-height: 34px;}

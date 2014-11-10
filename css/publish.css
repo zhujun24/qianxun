@@ -9,3 +9,5 @@ body{padding-top:70px;}
 .help-inline{display:none;color:#a94442;}
 #num{display:block;}
 #textarea{overflow-y:scroll;resize:none;}
+#yzm-img{width: 70px;height: 32px;cursor: pointer;}
+.yzm-img-click{line-height: 34px;}

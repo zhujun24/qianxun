@@ -7,7 +7,11 @@
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <style>
+        #bottom {width: 100%;position: absolute; bottom: 0;}
+        #bottom p {text-align: center; line-height: 30px;margin: 5px 0;}
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,7 +41,7 @@
                 <li><a href="shi_info.html">失物信息</a></li>
                 <li><a href="zone.html">个人中心</a></li>
                 <li><a href="about.html">关于</a></li>
-                <li class="active"><a href="login.html">登陆</a></li>
+                <li><a href="login.html">登陆</a></li>
                 <li><a href="reg.html">注册</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
@@ -54,78 +58,22 @@
     </div>
 </nav>
 
-<!-- Body Main -->
-<div class="container">
-    <div class="col-sm-6 col-sm-offset-3">
-        <form class="form-horizontal" id="logform" role="form" action="login.php">
-            <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">邮箱</label>
-
-                <div class="col-sm-7">
-                    <input type="text" class="form-control" id="email" autofocus="autofocus" placeholder="邮箱">
-                    <span class="help-inline help">邮箱格式不正确</span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">密码</label>
-
-                <div class="col-sm-7">
-                    <input type="password" class="form-control" id="password" placeholder="密码">
-                    <span class="help-inline help">密码不正确</span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="yzm" class="col-sm-2 control-label">验证码</label>
-
-                <div class="col-sm-3">
-                    <input type="text" class="form-control" id="yzm" placeholder="输入验证码" maxlength="4">
-                    <span class="help-inline help">验证码输入错误</span>
-                </div>
-                <img id="yzm-img" src="php/code_char.php" title="看不清，点击换一张">
-                <span class="yzm-img-click">点击换一张</span>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox-inline">
-                        <label>
-                            <input id="remember" type="checkbox" checked="checked">记住密码
-                        </label>
-                    </div>
-                    <div class="checkbox-inline">
-                        <label>
-                            <input id="manager" type="checkbox">管理员登陆
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-7">
-                    <button id="log" type="button" class="btn btn-block btn-primary">登陆</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-7">
-                    <span class="help-inline pull-left">还没有账户？<a href="reg.html">立即注册</a></span>
-                    <a href="#" class="pull-right">忘记密码？</a>
-                </div>
-            </div>
-        </form>
+<div class="container" style="background:#eee; margin-top: 100px; border-radius: 6px;">
+    <div class="jumbotron">
+        <h2>404，您所查找的页面不存在。</h2>
+        <p><a class="btn btn-primary btn-lg" href="index.html">返回首页</a></p>
     </div>
 </div>
-
 
 <!-- Footer -->
 <div class="container-fluid" id="bottom">
     <p>Copyright 2014-? <span><a href="index.html">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
 </div>
 
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<!-- jQuery Cookie Plugin -->
-<script src="js/jquery.cookie.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
+
 </body>
 </html>

@@ -73,16 +73,51 @@ $(document).ready(function (){
         checkTextarea($('#textarea'));
     });
 
+    //验证码
+    $("#yzm-img").click(function(){
+        $(this).attr("src",'php/code_char.php?' + Math.random());
+        $("#yzm").val('').focus();
+    });
+
+    function check_yzm() {
+        var obj = $('#yzm');
+        var code_char = obj.val();
+        $.post("php/chk_code.php?act=char",{code:code_char},function(msg){
+            obj.next().css('display','block');
+            if(msg==1){
+                obj.parent().parent().removeClass('has-error');
+                obj.next().css('display','none');
+                console.log("验证码正确！");
+                return true;
+            }else{
+                obj.parent().parent().addClass('has-error');
+                obj.next().css('display','block');
+                console.log("验证码错误！");
+                return false;
+            }
+        });
+    }
+    $("#yzm").blur(function(){
+        check_yzm();
+    });
+    $("#yzm").focus(function(){
+        Focus($(this));
+    });
+
 
     // 提交验证
-    $('#submit').click(function () {
-        if ((checkEmpty($('#good')) == true)&&(checkEmpty($('#place')) == true)&&(checkEmpty($('#dtp_input1')) == true)&&checkTextarea($('#textarea'))) {
-            $('#submit').html('发布ing...');
-            alert('可以提交');
-            return true;
-        } else{
-            alert('请填写所有必填项之后提交');
-            return false;
-        };
+    $('#publish').click(function () {
+        $.post("php/chk_code.php?act=char",{code:$('#yzm').val()},function(msg) {
+            if (msg == 1 && (checkEmpty($('#good')) == true) && (checkEmpty($('#place')) == true) && (checkEmpty($('#dtp_input1')) == true) && checkTextarea($('#textarea'))) {
+                $('#publish').html('发布ing...');
+                console.log('可以提交');
+                $('#publishform').submit();
+                return true;
+            } else {
+                console.log('请填写所有必填项之后提交');
+                return false;
+            }
+            ;
+        });
     });
 });

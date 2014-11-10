@@ -48,28 +48,55 @@ $(document).ready(function (){
     $('#email').focus(Focus);
     $('#password').focus(Focus);
 
-    // 登陆表单提交
-    $('#submit').click(function () {
-        if ((checkEmail() == true)&&(checkPassword() == true)) {
-            $('#submit').html('登陆ing...');
-            //密码Cookie的存储
-            if ($("#remember").prop('checked')==true) {
-                $.cookie('password',$("#password").val());
-            } else{
-                $.cookie('password','');
-            };
-            //判断管理员登陆
-            if ($("#manager").prop('checked')==true) {
-                alert('管理员');
-                //管理员登陆
-                $('.form-horizontal').attr("action", "login.php");
-            } else {
-                //普通用户登陆
-                $('.form-horizontal').attr("action", "login2.php");
+    //验证码
+    $("#yzm-img").click(function(){
+        $(this).attr("src",'php/code_char.php?' + Math.random());
+        $("#yzm").val('').focus();
+    });
+
+    function check_yzm() {
+        var obj = $('#yzm');
+        var code_char = obj.val();
+        $.post("php/chk_code.php?act=char",{code:code_char},function(msg){
+            obj.next().css('display','block');
+            if(msg==1){
+                obj.next().css('display','none');
+                obj.css('border-color','#31b0d5');
+                console.log("验证码正确！");
+                return true;
+            }else{
+                obj.css('border-color','#d9534f');
+                obj.next().css('display','block');
+                console.log("验证码错误！");
+                return false;
             }
-            return true;
-        } else{
-            return false;
-        };
+        });
+    }
+    $("#yzm").blur(function(){
+        check_yzm();
+    });
+    $("#yzm").focus(function(){
+        Focus($(this));
+    });
+
+    // 登陆表单提交
+    $('#log').click(function () {
+        $.post("php/chk_code.php?act=char",{code:$('#yzm').val()},function(msg){
+            if (msg==1&&(checkEmail() == true)&&(checkPassword() == true)) {
+                console.log('true');
+                $('#submit').html('登陆ing...');
+                //密码Cookie的存储
+                if ($("#remember").prop('checked')==true) {
+                    $.cookie('password',$("#password").val());
+                } else{
+                    $.cookie('password','');
+                };
+                $('#logform').submit();
+                return true;
+            } else{
+                console.log('false');
+                return false;
+            };
+        });
     });
 });

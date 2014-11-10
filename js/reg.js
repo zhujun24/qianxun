@@ -99,6 +99,40 @@ $(document).ready(function (){
         Focus($(this));
     })
 
+
+    //验证码
+    $("#yzm-img").click(function(){
+        $(this).attr("src",'php/code_char.php?' + Math.random());
+        $("#yzm").val('').focus();
+    });
+
+    function check_yzm() {
+        var obj = $('#yzm');
+        var code_char = obj.val();
+        $.post("php/chk_code.php?act=char",{code:code_char},function(msg){
+            obj.next().css('display','block');
+            if(msg==1){
+                obj.next().removeClass('glyphicon-remove').addClass('glyphicon-ok');
+                obj.parent().parent().removeClass('has-error').addClass('has-success');
+                obj.parent().next().css('display','none');
+                console.log("验证码正确！");
+                return true;
+            }else{
+                obj.next().removeClass('glyphicon-ok').addClass('glyphicon-remove');
+                obj.parent().parent().removeClass('has-success').addClass('has-error');
+                obj.parent().next().css('display','block');
+                console.log("验证码错误！");
+                return false;
+            }
+        });
+    }
+    $("#yzm").blur(function(){
+        check_yzm();
+    });
+    $("#yzm").focus(function(){
+        Focus($(this));
+    });
+
     //QQ检查
     function checkQQ() {
         $('#qq').next().css('display','block');
@@ -127,15 +161,17 @@ $(document).ready(function (){
 
 
     // 登陆表单提交
-    $('#submit').click(function () {
-        if(regexEnum.name.test($('#name').val())==true&&regexEnum.password.test($('#password').val())&&($('#password').val()==$('#password2').val())&&regexEnum.phone.test($('#phone').val())&&regexEnum.email.test($('#email').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
-            $('#submit').html('注册ing...');
-            alert('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
-            $('.form-horizontal').attr("action", "reg.php");
-            return true;
-        } else{
-            alert('不符合要求,不可以注册（用于测试）');
-            return false;
-        };
+    $('#reg').click(function () {
+        $.post("php/chk_code.php?act=char",{code:$('#yzm').val()},function(msg){
+            if(msg==1&&regexEnum.name.test($('#name').val())==true&&regexEnum.password.test($('#password').val())&&($('#password').val()==$('#password2').val())&&regexEnum.phone.test($('#phone').val())&&regexEnum.email.test($('#email').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
+                $('#submit').html('注册ing...');
+                console.log('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
+                $('#regform').submit();
+                return true;
+            } else{
+                console.log('不符合要求,不可以注册（用于测试）');
+                return false;
+            }
+        });
     });
 });

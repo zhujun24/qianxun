@@ -6,3 +6,5 @@ body{padding-top:180px;min-height:500px;background:url(../images/log.jpg);-webki
 #bottom{width:100%;position:absolute;bottom:0;}
 #bottom p{text-align:center;line-height:30px;margin:5px 0;color:#fff;}
 .help{display:none;color:#d9534f;}
+#yzm-img{width: 80px;height: 32px;cursor: pointer;}
+.yzm-img-click{line-height: 34px;}
