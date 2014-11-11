@@ -3,5 +3,6 @@ body{padding-top:70px;}
 #brand{font-size:26px;color:#fff;}
 .navbar-header img{margin-top:-4px;}
 .navbar a{font-size:16px;}
+.media-body p{font-size: 16px;}
 #bottom{border-top:2px solid #e5e5e5;margin-top: 20px;}
 #bottom p{text-align:center;line-height:40px;margin:5px 0;}
