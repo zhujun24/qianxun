@@ -5,6 +5,7 @@ $(document).ready(function (){
         name:/^([a-zA-Z]|[\u4E00-\u9FA5]){1}([a-zA-Z0-9]|[\u4E00-\u9FA5]|[_]){5,15}$/,
         phone:/^(13|15|18|17)[0-9]{9}$/,
         qq:/^[^0]\d{4,9}$/,
+        email:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
     }
 
     $('.xiugai-btn').click(function(){
@@ -33,6 +34,13 @@ $(document).ready(function (){
         check($(this),regexEnum.name);
     })
     $('#name').focus(function () {
+        Focus($(this));
+    })
+
+    $('#email').blur(function () {
+        check($(this),regexEnum.email);
+    })
+    $('#email').focus(function () {
         Focus($(this));
     })
 
@@ -71,12 +79,12 @@ $(document).ready(function (){
 
 
 
-    // 登陆表单提交
-    $('#submit').click(function () {
-        if(regexEnum.name.test($('#name').val())==true&&regexEnum.password.test($('#password').val())&&($('#password').val()==$('#password2').val())&&regexEnum.phone.test($('#phone').val())&&regexEnum.email.test($('#email').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
+    // alter表单提交
+    $('#alter').click(function () {
+        if(regexEnum.email.test($('#email').val())==true&&regexEnum.name.test($('#name').val())==true&&regexEnum.phone.test($('#phone').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
             $('#submit').html('注册ing...');
             alert('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
-            $('.form-horizontal').attr("action", "reg.php");
+            $('.form-horizontal').submit();
             return true;
         } else{
             alert('不符合要求,不可以注册（用于测试）');
