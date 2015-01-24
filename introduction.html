@@ -7,7 +7,11 @@
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/login.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <style>
+        #bottom {width: 100%;position: absolute; bottom: 0;}
+        #bottom p {text-align: center; line-height: 30px;margin: 5px 0;}
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,7 +42,7 @@
                 <li><a href="zone.html">个人中心</a></li>
                 <li><a href="about.html">关于</a></li>
                 <li><a href="login.html">登陆</a></li>
-                <li class="active"><a href="reg.html">注册</a></li>
+                <li><a href="reg.html">注册</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <li>
@@ -54,41 +58,10 @@
     </div>
 </nav>
 
-<!-- Body Main -->
-<div class="container">
-    <h2 style="text-align:center">重置密码</h2>
-
-    <form class="form-horizontal" role="form" action="reset.php">
-        <div class="form-group">
-            <label for="ypassword" class="col-sm-4 control-label">原密码</label>
-
-            <div class="col-sm-4">
-                <input type="password" class="form-control" id="ypassword" placeholder="请输入原密码">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password1" class="col-sm-4 control-label">新密码</label>
-
-            <div class="col-sm-4">
-                <input type="password" class="form-control" id="password1" placeholder="请输入心密码">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password2" class="col-sm-4 control-label">确认心密码</label>
-
-            <div class="col-sm-4">
-                <input type="password" class="form-control" id="password2" placeholder="请再次输入新密码">
-            </div>
-        </div>
-        <p style="display:none" id="error" class="text-danger col-sm-offset-4">
-            &nbsp;&nbsp;密码由大小写字母和数字组成，共6-20位，两次密码必一致</p>
-
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-4">
-                <button type="submit" id="submit" class="btn btn-primary">确认修改</button>
-            </div>
-        </div>
-    </form>
+<div class="container" style="background:#eee; margin-top: 100px; border-radius: 6px;">
+    <div class="jumbotron" style="padding: 20px;">
+        <h2>这儿是使用介绍页面</h2>
+    </div>
 </div>
 
 <!-- Footer -->
@@ -96,11 +69,10 @@
     <p>Copyright 2014-? <span><a href="index.html">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
 </div>
 
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/reset.js"></script>
+
 </body>
 </html>
