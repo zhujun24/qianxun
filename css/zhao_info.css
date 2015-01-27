@@ -18,4 +18,8 @@ body{padding-top:70px;}
 h4.media-heading{font-weight:lighter;color:#333;}
 .affix{top:70px;}
 .next a{margin-left:10px;}
+<<<<<<< HEAD
+.center {width: auto;display: table;margin-left: auto;margin-right: auto;display: none;}
+=======
 .center {width: auto;display: table;margin-left: auto;margin-right: auto;}
+>>>>>>> 78d6ba16aa8a64366109ab106b3052eadc1ea66a
