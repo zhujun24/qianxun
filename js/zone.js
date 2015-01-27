@@ -82,12 +82,12 @@ $(document).ready(function (){
     // alter表单提交
     $('#alter').click(function () {
         if(regexEnum.email.test($('#email').val())==true&&regexEnum.name.test($('#name').val())==true&&regexEnum.phone.test($('#phone').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
-            $('#submit').html('注册ing...');
-            alert('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
+            $('#alter').html('提交ing...');
+            alert('符合要求,可以提交（用于测试）,确定后跳转到未完工的页面');
             $('.form-horizontal').submit();
             return true;
         } else{
-            alert('不符合要求,不可以注册（用于测试）');
+            alert('不符合要求,不可以提交（用于测试）');
             return false;
         };
     });

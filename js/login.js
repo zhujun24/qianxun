@@ -84,13 +84,20 @@ $(document).ready(function (){
         $.post("php/chk_code.php?act=char",{code:$('#yzm').val()},function(msg){
             if (msg==1&&(checkEmail() == true)&&(checkPassword() == true)) {
                 console.log('true');
-                $('#submit').html('登陆ing...');
+                $('#log').html('登陆ing...');
                 //密码Cookie的存储
                 if ($("#remember").prop('checked')==true) {
                     $.cookie('password',$("#password").val());
                 } else{
                     $.cookie('password','');
                 };
+
+                //管理员登陆
+                if($("#manager").prop('checked')==true){
+                    $.cookie('power','9');
+                }else{
+                    $.cookie('power','1');  
+                }
                 $('#logform').submit();
                 return true;
             } else{

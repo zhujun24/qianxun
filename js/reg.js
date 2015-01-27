@@ -159,19 +159,36 @@ $(document).ready(function (){
     })
     
 
-
-    // 登陆表单提交
+    //登陆表单提交
     $('#reg').click(function () {
         $.post("php/chk_code.php?act=char",{code:$('#yzm').val()},function(msg){
-            if(msg==1&&regexEnum.name.test($('#name').val())==true&&regexEnum.password.test($('#password').val())&&($('#password').val()==$('#password2').val())&&regexEnum.phone.test($('#phone').val())&&regexEnum.email.test($('#email').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
-                $('#submit').html('注册ing...');
-                console.log('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
+            if(regexEnum.name.test($('#name').val())==true&&regexEnum.password.test($('#password').val())&&($('#password').val()==$('#password2').val())&&regexEnum.phone.test($('#phone').val())&&regexEnum.email.test($('#email').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
+                $('#reg').html('注册ing...');
+                //console.log('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
+                 alert('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
+                //$('.form-horizontal').attr("action", "reg.php");
                 $('#regform').submit();
+
                 return true;
             } else{
-                console.log('不符合要求,不可以注册（用于测试）');
+                alert('不符合要求,不可以注册（用于测试）');
                 return false;
-            }
+            };
         });
     });
+    // 登陆表单提交
+    // $('#reg').click(function () {
+    //     $.post("php/chk_code.php?act=char",{code:$('#yzm').val()},function(msg){
+    //         if(msg==1&&regexEnum.name.test($('#name').val())==true&&regexEnum.password.test($('#password').val())&&($('#password').val()==$('#password2').val())&&regexEnum.phone.test($('#phone').val())&&regexEnum.email.test($('#email').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
+    //             $('#reg').html('注册ing...');
+    //             console.log('符合要求,可以注册（用于测试）,确定后跳转到未完工的页面');
+
+    //             $('#regform').submit();
+    //             return true;
+    //         } else{
+    //             console.log('不符合要求,不可以注册（用于测试）');
+    //             return false;
+    //         }
+    //     });
+    // });
 });
