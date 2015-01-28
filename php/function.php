@@ -38,7 +38,7 @@ function filter_word($str,$pid){
         //print_r($filter_word);
         //echo $str;
         //$str=$str;
-        for($i=0;$i<count($filter_word);$i++){          //应用For循环语句对敏感词进行判断
+        for($i=0;$i<count($filter_word)-1;$i++){          //应用For循环语句对敏感词进行判断
            //if(preg_match("/\b".trim($filter_word[$i])."\b/i",$str)){        //
            if(preg_match("/".trim($filter_word[$i])."/i",$str)){        
            //应用正则表达式，判断传递的留言信息中是否含有敏感词
@@ -66,7 +66,7 @@ function filter_arr($arr){
 	        //print_r($filter_word);
 	        //echo $str;
 	        //$str=$str;
-	        for($i=0;$i<count($filter_word);$i++){          //应用For循环语句对敏感词进行判断
+	        for($i=0;$i<count($filter_word)-1;$i++){          //应用For循环语句对敏感词进行判断
 	           //if(preg_match("/\b".trim($filter_word[$i])."\b/i",$str)){        //
 	           if(preg_match("/".trim($filter_word[$i])."/i",trim($arr[$j]))){        
 	           //应用正则表达式，判断传递的留言信息中是否含有敏感词
