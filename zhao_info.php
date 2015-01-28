@@ -67,6 +67,25 @@ include_once "php/header.php";
 										        $uname = $arr['uname'];
 										        $uheader = $arr['uheader'];
                             $pid = $row["pid"];
+                            
+                            if(empty($row['pimage'])){
+                        					echo "<div class='media'>
+            <a class='pull-left' href='#'>
+                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
+            </a><div class='media-body'>
+                <h4 class='media-heading'>".$uname."
+            <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
+                </h4>
+                <p>物品名称：".$row['pname']."</p>
+                <p>拾取地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
+                
+                        </div>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
+            
+        </div>";    	
+                            	}else{
                         echo "<div class='media'>
             <a class='pull-left' href='#'>
                 <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
@@ -74,7 +93,9 @@ include_once "php/header.php";
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
                 </h4>
-                <p>".$row['pdetails']."。</p>
+                <p>物品名称：".$row['pname']."</p>
+                <p>拾取地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
                 <a href='#'' class='thumbnail'>
                                 <img src='upload_images/".$row['pimage']."' data-src='holder.js/300x300' alt='物品图片'>
                             </a>
@@ -83,6 +104,7 @@ include_once "php/header.php";
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
             
         </div>";
+      														}
                         }
                     }
                 

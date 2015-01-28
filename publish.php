@@ -87,7 +87,8 @@ include_once "php/header.php";
                             <input type="hidden" id="dtp_input1" value="">
                         </div>
                         <div class="form-group">
-                            <label for="doc" class="col-lg-4 control-label">物品图片*</label>
+                            <!--label for="doc" class="col-lg-4 control-label">物品图片*</label-->
+                            <label for="doc" class="col-lg-4 control-label">物品图片&nbsp;&nbsp;<p>(若不填，则请尽可能给出详细描述)</p></label>
 
                             <div class="col-lg-8">
                                 <input type="file" name="uploadfile" id="doc" onchange="javascript:setImagePreview();"

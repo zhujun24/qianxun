@@ -1,8 +1,7 @@
 <?php
+session_start();
 error_reporting(0);
- if(!isset($_SESSION)){ session_start(); }
 ?>
-
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -37,10 +36,11 @@ error_reporting(0);
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="../index.php">首页</a></li>
+                <li><a href="../index.php">首页</a></li>
                 <li><a href="../zhao_info.php">招领信息</a></li>
                 <li><a href="../shi_info.php">失物信息</a></li>
                 <?php
+                
                 if(!empty($_SESSION["uname"])){
                     echo "<li><a href='../zone.php'>个人中心</a></li>";
                 }else {
@@ -50,7 +50,7 @@ error_reporting(0);
 
                 <li><a href="../about.php">关于</a></li>
                 <li><a href="../login.php">登陆</a></li>
-                <li><a href="../reg.php">注册</a></li>
+                <li class="active"><a href="../reg.php">注册</a></li>
                 <li><a href="../logout.php">注销</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
@@ -73,75 +73,59 @@ error_reporting(0);
  <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
 
 <?php
-  //print_r($_GET);
-  //print_r($_POST);
- // print_r($_FILES['uploadfile']);
-
- header("Content-type:text/html;charset=utf-8");
- error_reporting(0);
- if(!empty($_POST)){
+session_start();
+if(!empty($_POST)){
+    $email=$_POST["email"];
+    $password=$_POST["password"];
     
-    include_once "config.php";
-    include_once "function.php";
-    $pid=$_POST["pid"];
+	 include_once "config.php";
+	 include_once "conn.php";
+   include_once "function.php";
     
-    //过滤敏感词
-    filter_word($_POST["cdetails"],$pid);
-    $cdetails=$_POST["cdetails"];
+    //$_SESSION["email"]=$_GET["email"];//邮箱
+    //查询邮箱是否存在
+    $sql = "select * from t_user where 
+    uemail= '".$email."' and 
+    upwd='".$password."'  ";
+    $num = $conne->getRowsNum($sql);
+    if($num >= 1){
+    	//如果存在
+    	//echo "1";
+    	
+    	$rst = $conne->getRowsRst($sql);
+    	//print_r($rst);
+        $_SESSION["uid"] = $rst["uid"];
+        $_COOKIE["uid"] = $rst["uid"];
+    		$_SESSION["uname"] = $rst["uname"];
+				$_SESSION["uemail"] = $rst["uemail"];
+				$_SESSION["upwd"] = $rst["upwd"];
+        $_SESSION["utel"] = $rst["utel"];
+        $_SESSION["uqq"] = $rst["uqq"];
+				$_SESSION["upower"] = $rst["upower"];
+        $_SESSION["uheader"] = $rst["uheader"];
+    	
 
-    $psucceed = $_POST["psucceed"];
-    $uid = $_SESSION['uid'];
-    $ctime = date('Y-m-d H:i:s');
-        
-    if(!empty($psucceed)){
-        include_once "config.php";
-        $arr = mysql_fetch_assoc(mysql_query("select * from t_publish where pid='".$pid."' "));
-        $puid = $arr["uid"];
-        if($arr["psucceed"]==0){
-            if($puid == $uid){
-                include_once "conn.php";    
-                $sql = "update t_publish set psucceed='1' where pid= '$pid' ";
-                $rowsNum = $conne->uidRst($sql);
-                if($rowsNum > 0){
-                    echo "<h3>成功找到！</h3>";
-                    $conne->close_conn();
-                    echo_message("成功找到..." ,5 , $pid);
-                }else{
-                    echo "修改失败！";
-                    $conne->msg_error();
-                    $conne->close_conn();
-                    echo_message("请重新修改..." ,5,$pid);
-                }
-            }else{
-                echo "<h3>非本人无法确认成功找到！</h3>";
-                echo_message("非本人无法确认成功找到！" ,5, $pid);
-            }    
+        $conne->close_conn();        
+        //判断是否为管理员
+        if($rst["upower"] == 9){
+            //$url = "../admin/index.php";
+            echo "<script charset='utf-8' type='text/javascript'>alert('管理员登陆!');window.location.href='../admin/index.php';</script>";    
         }else{
-            echo "<h3>已成功找到！</h3>";
-            echo_message("已成功找到！",5, $pid);  
-        }
-        
-    }else{
-        include_once "conn.php";    
-        $insql = "insert into t_comment(pid,uid,ctime,cdetails) values('$pid','$uid','$ctime','$cdetails') ";
-        $conne = new opmysql();
-        //执行插入
-        $rowsNum = $conne->uidRst($insql);
-        if($rowsNum)
-        {
-            $conne->close_conn();
-            echo_message("评论成功！",5, $pid);   
-        }else {
-            //出错
-            //echo $conne->msg_error();   
+            echo_message("登录成功！" , 1);    
         }
 
 
-        
-        $conne->close_conn();
+    }else if($num == 0){
+    	$conne->close_conn();
+    	echo_message("您的账户不存在！或密码错误！请重新登陆！" , 2);
     }
 
+
+    mysql_close();
+
 }
+
+
 ?>
 </form>
 </div>

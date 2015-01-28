@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
@@ -19,7 +19,6 @@
 <!-- Head Navbar -->
 <?php
 include_once "php/header.php";
-//echo __FILE__;
 ?>
 <!-- Body Main -->
 <div class="container">
@@ -31,7 +30,7 @@ include_once "php/header.php";
         <p>这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
 
         <p>
-            <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
+            <a href="introduction.html" class="btn btn-primary" role="button">阅读使用说明</a>
             <a href="http://weibo.com/u/5038648787" class="btn btn-primary btn-success" role="button"><span
                     class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
@@ -84,7 +83,12 @@ include_once "php/header.php";
                         </thead>
                         <tbody>
                 <?php
-										include_once "php/config.php";
+
+                    //$db = mysql_connect('localhost','qdm114284171','WSQwsq1314') or die('can not connect to database1');
+										//mysql_select_db('qdm114284171_db',$db) or die(mysql_error($db));
+										$link_id=mysql_connect("localhost","qdm114284171","WSQwsq1314");
+										mysql_select_db("qdm114284171_db");
+										mysql_query("set names 'utf8'");
                     $sql = "select * from t_publish where ptype = '1'  order by pid desc limit 8";
                     // $rowsArray = $conne -> getRowsArray($sql);
                     $result = mysql_query($sql);
@@ -110,7 +114,7 @@ include_once "php/header.php";
                         }
                     }
                 }
-                //mysql_close();
+                mysql_close();
             ?>
                         
                         
@@ -132,7 +136,11 @@ include_once "php/header.php";
                         <tbody>
                           <?php
 
-                    //include_once "php/config.php";
+                    //$db = mysql_connect('localhost','qdm114284171','WSQwsq1314') or die('can not connect to database2');
+										//mysql_select_db('qdm114284171_db',$db) or die(mysql_error($db));
+										$link_id=mysql_connect("localhost","qdm114284171","WSQwsq1314");
+										mysql_select_db("qdm114284171_db");
+										mysql_query("set names 'utf8'");
                     $sql = "select * from t_publish where ptype = '0'  order by pid desc limit 8";
                     // $rowsArray = $conne -> getRowsArray($sql);
                     $result = mysql_query($sql);
@@ -158,7 +166,6 @@ include_once "php/header.php";
                         }
                     }
                 }
-                //mysql_close();
             ?>
                         
                         

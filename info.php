@@ -111,10 +111,15 @@ $num = $conne->getRowsNum($sql);
                 </h4>
             
                 <br/>
+                <?php
+                		if(!empty($pimage)){
+                ?>
                 <a href="#" class="thumbnail">
                     <img src="upload_images/<?php echo $pimage;?>" data-src="holder.js/300x300" alt="物品图片">
                 </a>
-                
+                <?php
+              		}
+                ?>
             </div>
             <?php
                 //include_once "php/config.php";

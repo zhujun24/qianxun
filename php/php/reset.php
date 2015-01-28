@@ -1,8 +1,7 @@
-<?php
+﻿<?php
 error_reporting(0);
- if(!isset($_SESSION)){ session_start(); }
+if(!isset($_SESSION)){ session_start(); };
 ?>
-
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -68,80 +67,42 @@ error_reporting(0);
 </nav>
 <!-- Body Main -->
 <div class="container">
-
-  
- <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
-
+<form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
 <?php
-  //print_r($_GET);
-  //print_r($_POST);
- // print_r($_FILES['uploadfile']);
-
- header("Content-type:text/html;charset=utf-8");
- error_reporting(0);
- if(!empty($_POST)){
+if(!empty($_POST)){
+    $pass=$_POST["pass"];
+    $password=$_POST["password"];
+    $password1=$_POST["password1"];
+    $password2=$_POST["password2"];
+    $uid=$_POST["uid"];
     
-    include_once "config.php";
-    include_once "function.php";
-    $pid=$_POST["pid"];
-    
-    //过滤敏感词
-    filter_word($_POST["cdetails"],$pid);
-    $cdetails=$_POST["cdetails"];
-
-    $psucceed = $_POST["psucceed"];
-    $uid = $_SESSION['uid'];
-    $ctime = date('Y-m-d H:i:s');
-        
-    if(!empty($psucceed)){
+    if( ($password==$pass) && ($password1==$password2)){
         include_once "config.php";
-        $arr = mysql_fetch_assoc(mysql_query("select * from t_publish where pid='".$pid."' "));
-        $puid = $arr["uid"];
-        if($arr["psucceed"]==0){
-            if($puid == $uid){
-                include_once "conn.php";    
-                $sql = "update t_publish set psucceed='1' where pid= '$pid' ";
-                $rowsNum = $conne->uidRst($sql);
-                if($rowsNum > 0){
-                    echo "<h3>成功找到！</h3>";
-                    $conne->close_conn();
-                    echo_message("成功找到..." ,5 , $pid);
-                }else{
-                    echo "修改失败！";
-                    $conne->msg_error();
-                    $conne->close_conn();
-                    echo_message("请重新修改..." ,5,$pid);
-                }
-            }else{
-                echo "<h3>非本人无法确认成功找到！</h3>";
-                echo_message("非本人无法确认成功找到！" ,5, $pid);
-            }    
-        }else{
-            echo "<h3>已成功找到！</h3>";
-            echo_message("已成功找到！",5, $pid);  
-        }
+        include_once "conn.php";
+        include_once "function.php";
         
-    }else{
-        include_once "conn.php";    
-        $insql = "insert into t_comment(pid,uid,ctime,cdetails) values('$pid','$uid','$ctime','$cdetails') ";
-        $conne = new opmysql();
-        //执行插入
-        $rowsNum = $conne->uidRst($insql);
-        if($rowsNum)
-        {
+        $sql="update t_user set  upwd = '".$password1."'  where uid = '".$uid."' ";
+
+        
+        $rowsNum = $conne->uidRst($sql);
+        if($rowsNum > 0){
+            echo "<h3>修改成功！</h3>";
             $conne->close_conn();
-            echo_message("评论成功！",5, $pid);   
-        }else {
-            //出错
-            //echo $conne->msg_error();   
+            echo_message("修改成功..." ,4);
+        }else{
+            echo "修改失败！";
+            $conne->msg_error();
+            $conne->close_conn();
+            echo_message("请重新修改..." ,4);
         }
 
 
-        
-        $conne->close_conn();
     }
+    
 
-}
+}     
+
+
 ?>
 </form>
 </div>

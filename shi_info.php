@@ -66,11 +66,14 @@ if(!empty($_POST["search"])){
         <div class="col-xs-8">
             <?php
                     include_once "php/config.php";
+                    // $email = stripslashes(trim($_POST['mail']));
+                    // $email = injectChk($email);
                     if(!empty($_POST["search"])){
-                        $search = $_POST["search"];
-                    $sql = "select * from t_publish where  ptype='0' and pname like '%".$search."%' order by pid desc ";    
+                        $search = stripslashes(trim($_POST['search']));
+                        //$search = injectChk($search);
+                        $sql = "select * from t_publish where  ptype='0' and pname like '%".$search."%' order by pid desc ";    
                     }else{
-                    $sql = "select * from t_publish where  ptype='0' order by pid desc ";
+                        $sql = "select * from t_publish where  ptype='0' order by pid desc ";
                     }
 
                     $result = mysql_query($sql);
@@ -78,10 +81,29 @@ if(!empty($_POST["search"])){
                     while ($row = mysql_fetch_array($result)) {
                             $uid = $row["uid"];
 
-        $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
-        $uname = $arr['uname'];
-        $uheader = $arr['uheader'];
+        										$arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
+        										$uname = $arr['uname'];
+        										$uheader = $arr['uheader'];
                             $pid = $row["pid"];
+                            
+                        if(empty($row['pimage'])){
+                        					echo "<div class='media'>
+            <a class='pull-left' href='#'>
+                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
+            </a><div class='media-body'>
+                <h4 class='media-heading'>".$uname."
+            <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
+                </h4>
+                <p>物品名称：".$row['pname']."</p>
+                <p>丢失地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
+                
+                        </div>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
+            
+        </div>";    	
+                            	}else{
                         echo "<div class='media'>
             <a class='pull-left' href='#'>
                 <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
@@ -89,7 +111,9 @@ if(!empty($_POST["search"])){
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
                 </h4>
-                <p>".$row['pdetails']."。</p>
+                <p>物品名称：".$row['pname']."</p>
+                <p>丢失地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
                 <a href='#'' class='thumbnail'>
                                 <img src='upload_images/".$row['pimage']."' data-src='holder.js/300x300' alt='物品图片'>
                             </a>
@@ -98,6 +122,7 @@ if(!empty($_POST["search"])){
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
             
         </div>";
+      														}
                         }
                     }else{
                         echo "<script charset='utf-8' type='text/javascript'>alert('您所查找的物品不存在！');</script>";

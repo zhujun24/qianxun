@@ -141,20 +141,44 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                     while ($row = mysql_fetch_array($result)) {
                             //$uid = $row["uid"];
                             $pid = $row["pid"];
-                        echo "<div class='media'>
+                        		if(empty($row['pimage']))
+                        		{
+                        			echo "<div class='media'>
             <a class='pull-left' href='#'>
                 <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
             </a><div class='media-body'>
-                <h4 class='media-heading'>".$_SESSION["uname"]."
+                <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
                 </h4>
-                <p>".$row['pdetails']."。</p>
+                <p>物品名称：".$row['pname']."</p>
+                <p>拾取地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
+                        </div>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";
+                        		}else
+                        		{
+                        			echo "<div class='media'>
+            <a class='pull-left' href='#'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+            </a><div class='media-body'>
+                <h4 class='media-heading'>".$uname."
+            <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
+                </h4>
+                <p>物品名称：".$row['pname']."</p>
+                <p>拾取地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
                 <a href='#'' class='thumbnail'>
                                 <img src='upload_images/".$row['pimage']."' data-src='holder.js/300x300' alt='物品图片'>
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
-                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";			
+                        		}    
+                            
+                        
+                        
+                        
                         }
                     }
                 
@@ -217,20 +241,40 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                     while ($row = mysql_fetch_array($result)) {
                             //$uid = $row["uid"];
                             $pid = $row["pid"];
-                        echo "<div class='media'>
+                        if(empty($row['pimage']))
+                        		{
+                        			echo "<div class='media'>
             <a class='pull-left' href='#'>
                 <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
             </a><div class='media-body'>
-                <h4 class='media-heading'>".$_SESSION["uname"]."
+                <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
                 </h4>
-                <p>".$row['pdetails']."。</p>
+                <p>物品名称：".$row['pname']."</p>
+                <p>丢失地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
+                        </div>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";
+                        		}else
+                        		{
+                        			echo "<div class='media'>
+            <a class='pull-left' href='#'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+            </a><div class='media-body'>
+                <h4 class='media-heading'>".$uname."
+            <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
+                </h4>
+                <p>物品名称：".$row['pname']."</p>
+                <p>丢失地点：".$row['plocation']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
                 <a href='#'' class='thumbnail'>
                                 <img src='upload_images/".$row['pimage']."' data-src='holder.js/300x300' alt='物品图片'>
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
-                        <a href='#' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";			
+                        		}    
                         }
                     }
                 
@@ -326,21 +370,40 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                             $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
         $uname = $arr['uname'];
         $uheader = $arr['uheader'];
-
-                        echo "<div class='media'>
+															
+															if(empty($row['pimage'])){
+																echo "<div class='media'>
             <a class='pull-left' href='#'>
                 <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
                 </h4>
-                <p>".$row['pdetails']."。</p>
+                <p>物品名称：".$row['pname']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
+                
+                        </div>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>已成功找到！</a></div>";
+															}else{
+																	echo "<div class='media'>
+            <a class='pull-left' href='#'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+            </a><div class='media-body'>
+                <h4 class='media-heading'>".$uname."
+            <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
+                </h4>
+                <p>物品名称：".$row['pname']."</p>
+                <p>详细描述：".$row['pdetails']."。</p>
                 <a href='#' class='thumbnail'>
                                 <img src='upload_images/".$row['pimage']."' data-src='holder.js/300x300' alt='物品图片'>
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>已成功找到！</a></div>";
+															}
+															
+                        
                         }
                     }
                 
