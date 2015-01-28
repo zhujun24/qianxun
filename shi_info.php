@@ -68,12 +68,24 @@ if(!empty($_POST["search"])){
                     include_once "php/config.php";
                     // $email = stripslashes(trim($_POST['mail']));
                     // $email = injectChk($email);
-                    if(!empty($_POST["search"])){
+                      if(!empty($_POST["search"])){
                         $search = stripslashes(trim($_POST['search']));
+                        $item = stripslashes(trim($_POST['item']));
+                        if(!empty($item)){
+                            $sql = "select * from t_publish where pitem = '".$item."' and ptype='0' and pname like '%".$search."%' order by pid desc "; 
+                        }else{
+                            $sql = "select * from t_publish where ptype='0' and pname like '%".$search."%' order by pid desc "; 
+                        }
                         //$search = injectChk($search);
-                        $sql = "select * from t_publish where  ptype='0' and pname like '%".$search."%' order by pid desc ";    
+                        
                     }else{
-                        $sql = "select * from t_publish where  ptype='0' order by pid desc ";
+                        $item = stripslashes(trim($_POST['item']));
+                       if(!empty($item)){
+                            $sql = "select * from t_publish where pitem = '".$item."' and ptype='0' order by pid desc "; 
+                        }else{
+                            $sql = "select * from t_publish where ptype='0' order by pid desc "; 
+                        }
+                        //$sql = "select * from t_publish where  ptype='0' order by pid desc ";
                     }
 
                     $result = mysql_query($sql);
