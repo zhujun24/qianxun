@@ -3,7 +3,10 @@
 class opmysql{
 	private $host = 'localhost';			//服务器地址
 	private $name = 'root';					//登录账号
-	private $pwd = '';					//登录密码
+	private $pwd = '';
+//	private $host = 'qdm114284171.my3w.com';			//服务器地址
+//	private $name = 'qdm114284171';					//登录账号
+//	private $pwd = '1234567890';					//登录密码
 	private $dBase = 'qdm114284171_db';			//数据库名称
 	private $conn = '';						//数据库链接资源
 	private $result = '';					//结果集
