@@ -1,13 +1,8 @@
 $(window).scroll(function () {
     //Ajax加载后返回的数据
     function waterfall(num) {
-<<<<<<< HEAD
-        $('.center').css("display","block");
-        var url = 'http://zhujun.esy.es/waterfall.json';
-=======
         $('.center').html("玩命加载中……");
         var url = 'php/waterfall.json';
->>>>>>> 78d6ba16aa8a64366109ab106b3052eadc1ea66a
         var newDOM = '';
         $.ajax({
             url: url,
@@ -21,11 +16,8 @@ $(window).scroll(function () {
                     }
                 });
                 $('.media').last().after(newDOM);
-<<<<<<< HEAD
                 $('.center').css("display","none");
-=======
                 $('.center').html("");
->>>>>>> 78d6ba16aa8a64366109ab106b3052eadc1ea66a
             }
         });
     }

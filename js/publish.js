@@ -1,5 +1,4 @@
 $(document).ready(function (){
-
     //日期选择控件
     $('.form_datetime').datetimepicker({
         language:  'zh-CN',

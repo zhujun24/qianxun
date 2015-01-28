@@ -15,7 +15,7 @@ if(empty($_SESSION['uid'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网发布--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
     <!--<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="css/publish.css" rel="stylesheet">
@@ -69,7 +69,7 @@ include_once "php/header.php";
                             <label for="place" class="col-lg-4 control-label">捡到&丢失地点*</label>
 
                             <div class="col-lg-8">
-                                <input name="location" 
+                                <input name="location"
                                 type="text" class="form-control" id="place" placeholder="地点">
                                 <span class="help-inline">地点不能为空</span>
                             </div>
@@ -79,8 +79,8 @@ include_once "php/header.php";
 
                             <div class="input-group date form_datetime col-lg-8" data-date="2014-01-01T00:00:00Z"
                                  data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
-                                <input id="timer" 
-                                name="time" 
+                                <input id="timer"
+                                name="time"
                                 class="form-control" size="16" type="text" value="" readonly>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
@@ -101,8 +101,8 @@ include_once "php/header.php";
                             <label for="textarea" class="col-lg-4 control-label">详情描述*</label>
 
                             <div class="col-lg-8">
-                                <textarea 
-                                name="details" 
+                                <textarea
+                                name="details"
                                 id="textarea" class="form-control" rows="6"
                                           placeholder="详细说明失物招领信息，不超过200字"></textarea>
                                 <span id="num" class="help-inline">您还可以输入200字</span>

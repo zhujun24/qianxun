@@ -19,7 +19,6 @@
 <!-- Head Navbar -->
 <?php
 include_once "php/header.php";
-//echo __FILE__;
 ?>
 <!-- Body Main -->
 <div class="container">
@@ -110,8 +109,8 @@ include_once "php/header.php";
                 }
                 //mysql_close();
             ?>
-                        
-                        
+
+
                         </tbody>
                     </table>
                 </div>
@@ -158,8 +157,8 @@ include_once "php/header.php";
                 }
                 //mysql_close();
             ?>
-                        
-                        
+
+
                         </tbody>
                     </table>
                 </div>
