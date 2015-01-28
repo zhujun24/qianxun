@@ -198,7 +198,8 @@
             <ul class="nav navbar-nav pull-right">
                 <li>
                     <form class="navbar-form navbar-right" role="search" action="shi_info.php" method="post">
-                        <div class="input-group">
+                   
+                            <div class="input-group ">
                             <div class="input-group-btn">
                                 <select class="form-control" role="menu" name="item">
                                     <option value="">所有物品</option>
@@ -210,11 +211,13 @@
                                     <option value="其他物品">其他物品</option>
                                 </select>
                             </div>
-                            <input type="text" class="form-control">
+                            <!-- <input type="text" class="form-control"> -->
+                            
+                            <input type="text" name="search" class="form-control" placeholder="想找什么物品呢？">
                             <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button">搜索</button>
+                                <button type="submit" class="btn btn-primary btn-default">搜索</button>
                             </span>
-                        </div>
+                            </div>
                     </form>
                 </li>
             </ul>
