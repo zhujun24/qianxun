@@ -48,12 +48,12 @@ include_once "php/header.php";
 
                             <div class="col-lg-8">
                                 <select name="item" class="form-control">
-                                    <option value="卡类证件">卡类证件</option>
-                                    <option value="随身物品">随身物品</option>
-                                    <option value="书籍文具">书籍文具</option>
-                                    <option value="电子数码">电子数码</option>
-                                    <option value="衣服饰品">衣服饰品</option>
-                                    <option value="其他物品">其他物品</option>
+                                    <option value="">卡类证件</option>
+                                    <option value="">随身物品</option>
+                                    <option value="">书籍文具</option>
+                                    <option value="">电子数码</option>
+                                    <option value="">衣服饰品</option>
+                                    <option value="">其他物品</option>
                                 </select>
                             </div>
                         </div>
