@@ -56,20 +56,20 @@ include_once "php/header.php";
         </div>
         <div class="col-xs-8">
         <?php
-                    include_once "php/config.php";
-                    $sql = "select * from t_publish where  ptype='1' order by pid desc ";
-                    $result = mysql_query($sql);
-                    if($result&&mysql_num_rows($result)>0){
-                    while ($row = mysql_fetch_array($result)) {
-                            $uid = $row["uid"];
+            include_once "php/config.php";
+            $sql = "select * from t_publish where  ptype='1' order by pid desc limit 10";
+            $result = mysql_query($sql);
+            if($result&&mysql_num_rows($result)>0){
+            while ($row = mysql_fetch_array($result)) {
+                    $uid = $row["uid"];
 
-										        $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
-										        $uname = $arr['uname'];
-										        $uheader = $arr['uheader'];
-                            $pid = $row["pid"];
-                            
-                            if(empty($row['pimage'])){
-                        					echo "<div class='media'>
+    		        $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
+    		        $uname = $arr['uname'];
+    		        $uheader = $arr['uheader'];
+                    $pid = $row["pid"];
+                    
+                    if(empty($row['pimage'])){
+                					echo "<div class='media'>
             <a class='pull-left' href='#'>
                 <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
             </a><div class='media-body'>
@@ -110,154 +110,9 @@ include_once "php/header.php";
                 
                 mysql_close();
             ?>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
 
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                    <a href="#" class="thumbnail">
-                        <img src="images/log.jpg" data-src="holder.js/300x300" alt="物品图片">
-                    </a>
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                    <a href="#" class="thumbnail">
-                        <img src="images/wu3.jpg" data-src="holder.js/300x300" alt="物品图片">
-                    </a>
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                    <a href="#" class="thumbnail">
-                        <img src="images/wu1.jpg" data-src="holder.js/300x300" alt="物品图片">
-                    </a>
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                    <a href="#" class="thumbnail">
-                        <img src="images/wu2.jpg" data-src="holder.js/300x300" alt="物品图片">
-                    </a>
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                    <a href="#" class="thumbnail">
-                        <img src="images/wu3.jpg" data-src="holder.js/300x300" alt="物品图片">
-                    </a>
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="images/head_photo.png" alt="头像">
-                </a>
-
-                <div class="media-body">
-                    <h4 class="media-heading">某某某人
-                        <small>&nbsp;&nbsp;发表于7月32日</small>
-                    </h4>
-                    如果仅仅就这一个问题看，显然是看问题的高度不同和认识不同，而导致的立场不同，自然看法也不同。列宁认为帝国主义的世界大战只不过是权势者们争权夺利的豪赌，无论谁输赢，对普通民众都没有什么大的关系，这是符合心理分析理论的看法的。在爱国主义的旗帜下，兜售对外强势，今天美俄如同一撤。
-                    <a href="#" class="thumbnail">
-                        <img src="images/wu2.jpg" data-src="holder.js/300x300" alt="物品图片">
-                    </a>
-                </div>
-                <a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a>
-            </div>
+            
+            
             <h4 class="center"></h4>
         </div>
     </div>
@@ -265,15 +120,14 @@ include_once "php/header.php";
 
 <!-- Footer -->
 <div class="container-fluid" id="bottom">
-    <p>Copyright &copy; 2014-<script>document.write(new Date().getFullYear());</script><span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
+    <p>Copyright 2014-? <span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
 </div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <script src="js/index.js"></script>
-<script src="js/waterfall.js"></script>
+<script src="js/zhao_waterfall.js"></script>
 </body>
 </html>
