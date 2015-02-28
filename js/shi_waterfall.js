@@ -62,7 +62,7 @@ $(window).scroll(function () {
         
         
         //循环执行，每隔300ms钟执行一次showalert（） 
-        window.setInterval(showalert, 300); 
+        showalert();
         function showalert() 
         { 
             var num = $('.media').size();

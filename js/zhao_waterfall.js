@@ -60,7 +60,7 @@ $(window).scroll(function () {
         
         //waterfall(num);
         //循环执行，每隔300ms钟执行一次showalert（） 
-        window.setInterval(showalert, 300); 
+        showalert();
         function showalert() 
         { 
             var num = $('.media').size();
@@ -73,7 +73,7 @@ $(window).scroll(function () {
                 console.log("count");
                 console.log(count);   
             }    
-        } 
+        }
         // //定时执行，5秒后执行show() 
         // window.setTimeout(show,5000); 
         // function show() 

@@ -84,5 +84,6 @@ $result = $items;
 //echo json_encode($result);
 $code = json_encode($result);  
 $code = preg_replace("#\\\u([0-9a-f]+)#ie", "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))", $code);  
+//$code = preg_replace_callback('/\\\\u([0-9a-f]{4})/i', create_function( '$matches', 'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'), $code);
 echo $code;
 ?>
