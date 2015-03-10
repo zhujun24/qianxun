@@ -73,7 +73,7 @@ error_reporting(0);
  <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
 
 <?php
-error_reporting(0);
+	error_reporting(0);
  if(!empty($_POST)){
     
     $username = stripslashes(trim($_POST['name']));
@@ -86,12 +86,12 @@ error_reporting(0);
     $password = md5(trim($_POST['password']));
     $email = trim($_POST['email']);
     $regtime = time();
-
+    //$regtime = date("y-m-d H:i:s",$time) //2010-08-29
     $token = md5($username.$password.$regtime); //创建用于激活识别码
     $token_exptime = time()+60*60*24;//过期时间为24小时后
 
   
-        
+		
     include_once "conn.php";
     include_once "function.php";
     //$_SESSION["email"]=$_GET["email"];//邮箱
@@ -103,15 +103,15 @@ error_reporting(0);
     //查询数据库是否存在该邮箱
     $num = $conne->getRowsNum($sql);
     if($num >= 1){
-        //如果存在
-        //echo "1";
+    	//如果存在
+    	//echo "1";
         $conne->close_conn();
-        echo_message("您的邮箱已存在！",2);
+    	echo_message("您的邮箱已存在！",2);
     }else if($num == 0){
-        //echo "0";
-        //echo_message("您的邮箱不存在！");
+    	//echo "0";
+    	//echo_message("您的邮箱不存在！");
 
-        $insql = "insert into t_user(uname,uemail,upwd,utel,uqq,upower,token,token_exptime,regtime) values('$username','$email','$password','$telephone','$qq',1,'$token','$token_exptime','regtime') ";
+    	$insql = "insert into t_user(uname,uemail,upwd,utel,uqq,upower,token,token_exptime,regtime) values('$username','$email','$password','$telephone','$qq',1,'$token','$token_exptime','regtime') ";
 
         mysql_query($insql);
 
@@ -134,7 +134,7 @@ error_reporting(0);
             $smtpemailto = $email;
             $smtpemailfrom = $smtpusermail;
             $emailsubject = "用户帐号激活";
-            $emailbody = "亲爱的".$username."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/><a href='www.hfutfind.com/php/register/active.php?verify=".$token."' target='_blank'>http://www.hfutfind.com/php/register/active.php?verify=".$token."</a><br/>如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。<br/>如果此次激活请求非你本人所发，请忽略本邮件。<br/><p style='text-align:right'>-------- Hfutfind.com 敬上</p>";
+            $emailbody = "亲爱的".$username."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/><a href='localhost:8090/qianxun/php/register/active.php?verify=".$token."' target='_blank'>http://localhost:8090/qianxun/php/register/active.php?verify=".$token."</a><br/>如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。<br/>如果此次激活请求非你本人所发，请忽略本邮件。<br/><p style='text-align:right'>-------- Hfutfind.com 敬上</p>";
 
             $rs = $smtp->sendmail($smtpemailto, $smtpemailfrom, $emailsubject, $emailbody, $emailtype);
             if($rs==1){
@@ -147,25 +147,25 @@ error_reporting(0);
         }
         echo $msg;
 
-   //   //执行插入
-   //   $rowsNum = $conne->uidRst($insql);
-   //   if($rowsNum)
-   //   {
+   //  	//执行插入
+   //  	$rowsNum = $conne->uidRst($insql);
+   //  	if($rowsNum)
+   //  	{
    //          $conne->close_conn();
-            // echo_message("注册成功！请登录千寻网！",1);   
-   //   }else {
-   //       //出错
-   //       echo $conne->msg_error();   
-   //   }
+			// echo_message("注册成功！请登录千寻网！",1);   
+   //  	}else {
+   //  		//出错
+   //  		echo $conne->msg_error();	
+   //  	}
 
     }else {
-        //出错
-        echo $conne->msg_error();
+    	//出错
+    	echo $conne->msg_error();
     }
     $conne->close_conn();
     
  }
-    mysql_close();  
+    mysql_close();	
 ?>
 </form>
 </div>
@@ -181,14 +181,5 @@ error_reporting(0);
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="../js/reg.js"></script>
-
-<!-- hfutfind.com Baidu tongji analytics -->
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
-
-</script>
-
 </body>
 </html>

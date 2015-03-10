@@ -79,12 +79,13 @@ if(!empty($_POST)){
     // $password=$_POST["password"];
     $email = trim($_POST['email']);
     $password = md5(trim($_POST['password']));
-
-
+    //密码前12位
+    $password = substr($password , 0 , 12);
     
-    include_once "config.php";
-    include_once "conn.php";
-    include_once "function.php";
+    //echo $email."__".$password;
+	 include_once "config.php";
+	 include_once "conn.php";
+   include_once "function.php";
     
     //$_SESSION["email"]=$_GET["email"];//邮箱
     //查询邮箱是否存在
@@ -121,6 +122,7 @@ if(!empty($_POST)){
 
     }else if($num == 0){
     	$conne->close_conn();
+        //echo "error";
     	echo_message("您的账户不存在！或密码错误！请重新登陆！" , 2);
     }
 
@@ -145,14 +147,5 @@ if(!empty($_POST)){
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="../js/reg.js"></script>
-
-<!-- hfutfind.com Baidu tongji analytics -->
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
-
-</script>
-
 </body>
 </html>

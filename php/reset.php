@@ -70,10 +70,23 @@ if(!isset($_SESSION)){ session_start(); };
 <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
 <?php
 if(!empty($_POST)){
-    $pass=$_POST["pass"];
-    $password=$_POST["password"];
-    $password1=$_POST["password1"];
-    $password2=$_POST["password2"];
+    //$pass=$_POST["pass"];
+    //$password=$_POST["password"];
+    $pass = trim($_POST['pass']);
+    $password = md5(trim($_POST['password']));
+    //密码前12位
+    $pass = substr($pass , 0 , 12);
+    $password = substr($password , 0 , 12);
+    //echo $pass."__".$password."<br />";
+    // $password1=$_POST["password1"];
+    // $password2=$_POST["password2"];
+
+    $password1 = md5(trim($_POST['password1']));
+    $password2 = md5(trim($_POST['password2']));
+    //密码前12位
+    $password1 = substr($password1 , 0 , 12);
+    $password2 = substr($password2 , 0 , 12);
+    //echo $password1."__".$password2."<br />";
     $uid=$_POST["uid"];
     
     if( ($password==$pass) && ($password1==$password2)){
@@ -118,12 +131,5 @@ if(!empty($_POST)){
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="../js/reg.js"></script>
-
-<!-- hfutfind.com Baidu tongji analytics -->
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
 </body>
 </html>
