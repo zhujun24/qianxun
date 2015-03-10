@@ -54,14 +54,8 @@ $(window).scroll(function () {
     }
 
     var down = $(document).height() - $(document).scrollTop() - $(window).height();
-    if (down < 10) {
+    if (down < 300) {
         
-        // var media_Count=document.getElementById("media").getElementsByTagName("div").length;
-        // if(media_Count > count)
-        //     $('.center').html("已加载全部信息");
-        
-        
-        //循环执行，每隔300ms钟执行一次showalert（） 
         showalert();
         function showalert() 
         { 
@@ -76,8 +70,5 @@ $(window).scroll(function () {
                 console.log(count);   
             }    
         }
-        
-        // console.log(count);
-        // console.log(down);
     }
 });

@@ -1,15 +1,13 @@
-<?php
-header("Content-type: text/html; charset=utf-8");
-
-
-
+﻿<?php
 //如何快速从MySQL表中取值组合成JSON
 //include 'inc/xcl_conn.php';
-$db = mysql_connect('localhost','root','') or die('can not connect to database');
-mysql_select_db('qianxun',$db) or die(mysql_error($db));
-mysql_query("set names 'utf8'");
-
-
+// $db = mysql_connect('localhost','root','') or die('can not connect to database');
+// mysql_select_db('qianxun',$db) or die(mysql_error($db));
+// mysql_query("set names 'utf8'");
+//header("Content-type:text/html;charset=utf-8");
+$db = mysql_connect('qdm114284171.my3w.com','qdm114284171','1234567890') or die('can not connect to database');
+mysql_select_db('qdm114284171_db',$db) or die(mysql_error($db));
+mysql_query("set names 'utf8'");	
 
 
 
@@ -83,7 +81,7 @@ while($row = mysql_fetch_object($rs)){
 $result = $items;
 //echo json_encode($result);
 $code = json_encode($result);  
-$code = preg_replace("#\\\u([0-9a-f]+)#ie", "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))", $code);  
-//$code = preg_replace_callback('/\\\\u([0-9a-f]{4})/i', create_function( '$matches', 'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'), $code);
+//$code = preg_replace("#\\\u([0-9a-f]+)#ie", "iconv('UCS-2', 'UTF-8', pack('H4', '\\1'))", $code);  
+$code = preg_replace_callback('/\\\\u([0-9a-f]{4})/i', create_function( '$matches', 'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'), $code);
 echo $code;
 ?>
