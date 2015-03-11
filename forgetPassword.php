@@ -14,6 +14,15 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+.demo{width:400px; margin:40px auto 0 auto; min-height:250px;}
+.demo h3{line-height:24px; text-align:center; color:#360; font-size:16px}
+.demo p{line-height:30px; padding:4px}
+.demo p span{margin-left:6px; color:#f30}
+.input{width:240px; height:24px; padding:2px; line-height:24px; border:1px solid #999}
+.btn{position: relative;overflow: hidden;display:inline-block;*display:inline;padding:4px 20px 4px;font-size:16px;line-height:20px;*line-height:22px;color:#fff;text-align:center;vertical-align:middle;cursor:pointer;background-color:#5bb75b;border:1px solid #cccccc;border-color:#e6e6e6 #e6e6e6 #bfbfbf;border-bottom-color:#b3b3b3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}
+</style>
+
 </head>
 <body>
 <!-- Head Navbar -->
@@ -24,26 +33,22 @@ include_once "php/header.php";
 
 <!-- Body Main -->
 <div class="container">
-    <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
-        <h3>输入您注册时的邮箱，我们将会把密码发送到您的邮箱</h3>
-        <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">邮箱</label>
-
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" placeholder="输入您注册时的邮箱">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" id="button">发送密码</button>
-            </div>
-        </div>
-    </form>
+    
+    <div id="main">
+   <div class="demo">
+            <h3><p>用户可以通过邮箱找回密码</p>
+            <p><strong>输入您注册的电子邮箱，找回密码：</strong></p>
+            <p><input type="text" class="input" name="email" id="email"><span id="chkmsg"></span></p>
+            <p><input type="button" class="btn" id="sub_btn" value="提 交"></p>
+            </h3>
+    </div>
+ <br/>
+</div>
 </div>
 
 <!-- Footer -->
 <div class="container-fluid" id="bottom">
-    <p>Copyright &copy; 2014-<script>document.write(new Date().getFullYear());</script><span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
+    <p>Copyright 2014-? <span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
 </div>
 
 
@@ -51,6 +56,29 @@ include_once "php/header.php";
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="js/forget.js"></script>
+<!-- <script src="js/forget.js"></script> -->
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $("#sub_btn").click(function(){
+        var email = $("#email").val();
+        var preg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/; //匹配Email
+        if(email=='' || !preg.test(email)){
+            $("#chkmsg").html("请填写正确的邮箱！");
+        }else{
+            $("#sub_btn").attr("disabled","disabled").val('提交中..').css("cursor","default");
+            $.post("php/sendmail.php",{mail:email},function(msg){
+                if(msg=="noreg"){
+                    $("#chkmsg").html("该邮箱尚未注册！");
+                    $("#sub_btn").removeAttr("disabled").val('提 交').css("cursor","pointer");
+                }else{
+                    $(".demo").html("<h3>"+msg+"</h3>");
+                }
+            });
+        }
+    });
+})
+</script>
+
 </body>
 </html>
