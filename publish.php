@@ -1,4 +1,4 @@
-
+﻿
 <?php
 error_reporting(0);
 include_once "php/function.php";
@@ -48,12 +48,12 @@ include_once "php/header.php";
 
                             <div class="col-lg-8">
                                 <select name="item" class="form-control">
-                                    <option value="">卡类证件</option>
-                                    <option value="">随身物品</option>
-                                    <option value="">书籍文具</option>
-                                    <option value="">电子数码</option>
-                                    <option value="">衣服饰品</option>
-                                    <option value="">其他物品</option>
+                                    <option value="卡类证件">卡类证件</option>
+                                    <option value="随身物品">随身物品</option>
+                                    <option value="书籍文具">书籍文具</option>
+                                    <option value="电子数码">电子数码</option>
+                                    <option value="衣服饰品">衣服饰品</option>
+                                    <option value="其他物品">其他物品</option>
                                 </select>
                             </div>
                         </div>
@@ -69,7 +69,7 @@ include_once "php/header.php";
                             <label for="place" class="col-lg-4 control-label">捡到&丢失地点*</label>
 
                             <div class="col-lg-8">
-                                <input name="location"
+                                <input name="location" 
                                 type="text" class="form-control" id="place" placeholder="地点">
                                 <span class="help-inline">地点不能为空</span>
                             </div>
@@ -79,8 +79,8 @@ include_once "php/header.php";
 
                             <div class="input-group date form_datetime col-lg-8" data-date="2014-01-01T00:00:00Z"
                                  data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
-                                <input id="timer"
-                                name="time"
+                                <input id="timer" 
+                                name="time" 
                                 class="form-control" size="16" type="text" value="" readonly>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
@@ -101,8 +101,8 @@ include_once "php/header.php";
                             <label for="textarea" class="col-lg-4 control-label">详情描述*</label>
 
                             <div class="col-lg-8">
-                                <textarea
-                                name="details"
+                                <textarea 
+                                name="details" 
                                 id="textarea" class="form-control" rows="6"
                                           placeholder="详细说明失物招领信息，不超过200字"></textarea>
                                 <span id="num" class="help-inline">您还可以输入200字</span>
@@ -148,9 +148,9 @@ include_once "php/header.php";
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright &copy; 2014-<script>document.write(new Date().getFullYear());</script><span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "php/footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -162,5 +162,14 @@ include_once "php/header.php";
 <script src="js/bootstrap-filestyle.min.js"></script>
 <script src="js/previewImage.js"></script>
 <script src="js/publish.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
 </html>

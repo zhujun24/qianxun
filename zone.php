@@ -86,7 +86,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                             <label class="col-sm-3 control-label">密码</label>
 
                             <div class="col-sm-9">
-<!--                                 <p class="form-control-static yuanlai"><?php echo $upwd;?></p> -->
+                                <!-- <p class="form-control-static yuanlai"><?php echo $upwd;?></p> -->
                                 <a href="resetPassword.php" class="btn btn-primary right" role="button">修改密码</a>    
                             </div>
 
@@ -434,9 +434,9 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "php/footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -446,6 +446,15 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 <!-- <script src="js/zone.js"></script> -->
 <script src="js/zone.js"></script>
 <script src="js/bootstrap-filestyle.min.js"></script>
+
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
 
 </body>
 </html>

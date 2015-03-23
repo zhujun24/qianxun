@@ -19,6 +19,7 @@
 <!-- Head Navbar -->
 <?php
 include_once "php/header.php";
+//echo __FILE__;
 ?>
 <!-- Body Main -->
 <div class="container">
@@ -31,6 +32,8 @@ include_once "php/header.php";
 
         <p>
             <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
+            <a href="http://weibo.com/u/5038648787" class="btn btn-primary btn-success" role="button"><span
+                    class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
     </div>
     <div class="row">
@@ -109,8 +112,8 @@ include_once "php/header.php";
                 }
                 //mysql_close();
             ?>
-
-
+                        
+                        
                         </tbody>
                     </table>
                 </div>
@@ -157,8 +160,8 @@ include_once "php/header.php";
                 }
                 //mysql_close();
             ?>
-
-
+                        
+                        
                         </tbody>
                     </table>
                 </div>
@@ -168,9 +171,10 @@ include_once "php/header.php";
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright &copy; 2014-<script>document.write(new Date().getFullYear());</script><span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+	include_once "php/footer.php";
+?>
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -178,5 +182,12 @@ include_once "php/header.php";
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/index.js"></script>
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
 </body>
 </html>

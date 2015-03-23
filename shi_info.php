@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
@@ -72,18 +72,18 @@ if(!empty($_POST["search"])){
                         $search = stripslashes(trim($_POST['search']));
                         $item = stripslashes(trim($_POST['item']));
                         if(!empty($item)){
-                            $sql = "select * from t_publish where pitem = '".$item."' and ptype='0' and pname like '%".$search."%' order by pid desc "; 
+                            $sql = "select * from t_publish where pitem = '".$item."' and ptype='0' and pname like '%".$search."%' order by pid desc limit 10 "; 
                         }else{
-                            $sql = "select * from t_publish where ptype='0' and pname like '%".$search."%' order by pid desc "; 
+                            $sql = "select * from t_publish where ptype='0' and pname like '%".$search."%' order by pid desc limit 10 "; 
                         }
                         //$search = injectChk($search);
                         
                     }else{
                         $item = stripslashes(trim($_POST['item']));
-                       if(!empty($item)){
-                            $sql = "select * from t_publish where pitem = '".$item."' and ptype='0' order by pid desc "; 
+                        if(!empty($item)){
+                            $sql = "select * from t_publish where pitem = '".$item."' and ptype='0' order by pid desc limit 10 "; 
                         }else{
-                            $sql = "select * from t_publish where ptype='0' order by pid desc "; 
+                            $sql = "select * from t_publish where ptype='0' order by pid desc limit 10 "; 
                         }
                         //$sql = "select * from t_publish where  ptype='0' order by pid desc ";
                     }
@@ -143,15 +143,16 @@ if(!empty($_POST["search"])){
                 mysql_close();
             ?>
 
+            
             <h4 class="center"></h4>
         </div>
     </div>
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "php/footer.php";
+?>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -159,5 +160,10 @@ if(!empty($_POST["search"])){
 
 <script src="js/index.js"></script>
 <script src="js/shi_waterfall.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));</script>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include_once("config.php");
 include_once("function.php");
 
@@ -20,7 +20,7 @@ if($num==0){//该邮箱尚未注册！
 	$getpasstime = time();
 	$uid = $row['uid'];
 	$token = md5($uid.$row['uname'].$row['upwd']);
-	$url = "http://localhost:8090/qianxun/php/resetPass.php?email=".$email." 
+	$url = "http://www.hfutfind.com/php/resetPass.php?email=".$email." 
 	&token=".$token;//构造URL
 	//$url = "reset.php?email=".$email."&token=".$token;
 	$time = date('Y-m-d H:i');

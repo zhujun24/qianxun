@@ -77,7 +77,7 @@ if(!empty($_POST)){
     //密码前12位
     $pass = substr($pass , 0 , 12);
     $password = substr($password , 0 , 12);
-    //echo $pass."__".$password."<br />";
+
     // $password1=$_POST["password1"];
     // $password2=$_POST["password2"];
 
@@ -86,7 +86,7 @@ if(!empty($_POST)){
     //密码前12位
     $password1 = substr($password1 , 0 , 12);
     $password2 = substr($password2 , 0 , 12);
-    //echo $password1."__".$password2."<br />";
+
     $uid=$_POST["uid"];
     
     if( ($password==$pass) && ($password1==$password2)){
@@ -121,9 +121,9 @@ if(!empty($_POST)){
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.html">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -131,5 +131,14 @@ if(!empty($_POST)){
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="../js/reg.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
 </html>

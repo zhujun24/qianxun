@@ -28,14 +28,14 @@ include_once "php/header.php";
 <div class="container" style="background:#eee; margin-top: 100px; border-radius: 6px;">
     <div class="jumbotron" style="padding: 20px;">
         <h2>404，千寻君好像被外星人劫持了……</h2>
-        <p><a class="btn btn-primary btn-lg" href="index.html">返回首页</a></p>
+        <p><a class="btn btn-primary btn-lg" href="index.php">返回首页</a></p>
     </div>
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright &copy; 2014-<script>document.write(new Date().getFullYear());</script><span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "php/footer.php";
+?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
