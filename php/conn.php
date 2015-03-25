@@ -1,9 +1,15 @@
 <?php
 //数据库配置链接及操作数据库函数
 class opmysql{
-	private $host = 'qdm114284171.my3w.com';			//服务器地址
-	private $name = 'qdm114284171';					//登录账号
-	private $pwd = '1234567890';					//登录密码
+//	private $host = 'qdm114284171.my3w.com';			//服务器地址
+//	private $name = 'qdm114284171';					//登录账号
+//	private $pwd = '1234567890';					//登录密码
+
+    private $host = 'localhost';
+    private $name = 'root';
+    private $pwd = '';
+
+
 	private $dBase = 'qdm114284171_db';			//数据库名称
 	private $conn = '';						//数据库链接资源
 	private $result = '';					//结果集

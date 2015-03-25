@@ -40,8 +40,6 @@ if(!empty($_POST["search"])){
 
         <p>
             <a href="introduction.html" class="btn btn-primary" role="button">阅读使用说明</a>
-            <a href="http://weibo.com" class="btn btn-primary btn-success" role="button"><span
-                    class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
     </div>
     <div class="row">
