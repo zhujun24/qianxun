@@ -19,7 +19,13 @@
 <!-- Head Navbar -->
 <?php
 include_once "php/header.php";
-//echo __FILE__;
+include_once "php/conn.php";
+include_once "php/config.php";
+
+    $result = mysql_query("SELECT * FROM t_publish where psucceed='1' ");
+    $num_rows = mysql_num_rows($result);
+    //成功总记录数
+    //mysql_close();
 ?>
 <!-- Body Main -->
 <div class="container">
@@ -28,10 +34,12 @@ include_once "php/header.php";
 
         <h1>你好 欢迎来到千寻网！</h1>
 
-        <p style="color: #5bc0de;">这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
+        <p>这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
 
         <p>
             <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
+            <a href="http://weibo.com/u/5038648787" class="btn btn-primary btn-success" role="button"><span
+                    class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
     </div>
     <div class="row">
@@ -47,7 +55,7 @@ include_once "php/header.php";
                     <br/>
                     <a href="publish.php" class="btn btn-info btn-lg btn-block" role="button">我捡到宝贝啦</a>
 
-                    <h3>已成功帮<span>88</span>件宝贝找到主人!</h3>
+                    <h3>已成功帮<span><?php echo $num_rows;?></span>件宝贝找到主人!</h3>
 
                     <h3>在工大 失物招领就上千寻网!</h3>
                 </div>

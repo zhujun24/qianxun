@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,7 +78,7 @@ if(!empty($_FILES['uploadfile'])){
     //print_r($_POST);
     include_once "config.php";
     //$dir = 'E:\xampp\htdocs\qianxun\upload_images\head_photo';
-    $dir = '/htdocs/qianxun/upload_images/head_photo';
+    $dir = '/data/home/qxu1098220222/htdocs/upload_images/head_photo';
 
     if($_FILES['uploadfile']['error'] != UPLOAD_ERR_OK)
     {
@@ -168,30 +168,58 @@ if(!empty($_FILES['uploadfile'])){
 
  if(!empty($_POST)){
     $name=$_POST["name"];
-    $email=$_POST["email"];
+    $email=$_POST["email"]; //邮箱不可修改
     $telephone=$_POST["phone"];
     $qq=$_POST["qq"];
-    
-    include_once "conn.php";
-    include_once "function.php";
 
-    $sql="update t_user set uname = '".$name."' , uemail = '".$email."' , utel = '".$telephone."' , uqq = '".$qq."'  where uid = '".$_SESSION["uid"]."' ";
 
-    
-    $rowsNum = $conne->uidRst($sql);
-    if($rowsNum > 0){
-        echo "<h3>修改成功！</h3>";
-        $conne->close_conn();
-        //session_destroy();
+
+    //正则表达式匹配手机 
+    if(strlen($telephone) == "11") { 
+        //上面部分判断长度是不是11位 
+        $n = preg_match_all("/13[123569]{1}\d{8}|15[1235689]\d{8}|188\d{8}/",$telephone,$array); 
+        /*接下来的正则表达式("/131,132,133,135,136,139开头随后跟着任意的8为数字 '|'(或者的意思) 
+        * 151,152,153,156,158.159开头的跟着任意的8为数字 
+        * 或者是188开头的再跟着任意的8为数字,匹配其中的任意一组就通过了 
+        * /")*/ 
+
+        //var_dump($array); //看看是不是找到了,如果找到了,就会输出电话号码的 
+        if(!empty($array[0][0])){
+                include_once "conn.php";
+                include_once "function.php";
+
+                $sql="update t_user set uname = '".$name."' , uemail = '".$email."' , utel = '".$telephone."' , uqq = '".$qq."'  where uid = '".$_SESSION["uid"]."' ";
+
+                // $sql="update t_user set uname = '".$name."' , utel = '".$telephone."' , uqq = '".$qq."'  where uid = '".$_SESSION["uid"]."' ";
+                
+                $rowsNum = $conne->uidRst($sql);
+                if($rowsNum > 0){
+                    echo "<h3>修改成功！</h3>";
+                    $conne->close_conn();
+                    //session_destroy();
+                    
+                    echo_message("修改成功..." ,4);
+                }else{
+                    echo "修改失败！";
+                    $conne->msg_error();
+                    $conne->close_conn();
+                    echo_message("请重新修改..." ,4);
+                }            
+
+
+        }else{
+            echo_message("手机号码错误,请重新修改..." ,4);
+        }
+
         
-        echo_message("修改成功..." ,4);
-    }else{
-        echo "修改失败！";
-        $conne->msg_error();
-        $conne->close_conn();
-        echo_message("请重新修改..." ,4);
-    }
-
+    }else { 
+        //echo "长度必须是11位"; 
+        echo_message("手机长度必须是11位,请重新修改..." ,4);
+    } 
+    /* 
+    * 虽然看起来复杂点,清楚理解! 
+    * 如果有更好的,可以贴出来,分享快乐! 
+    * */ 
  }     
 
 }

@@ -10,7 +10,7 @@ error_reporting(0);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -88,41 +88,48 @@ if(!empty($_POST)){
     
     //$_SESSION["email"]=$_GET["email"];//邮箱
     //查询邮箱是否存在
-    $sql = "select * from t_user where 
-    uemail= '".$email."' and 
-    upwd='".$password."'  ";
-    $num = $conne->getRowsNum($sql);
-    if($num >= 1){
-    	//如果存在
-    	//echo "1";
-    	
-    	$rst = $conne->getRowsRst($sql);
-    	//print_r($rst);
-        $_SESSION["uid"] = $rst["uid"];
-        $_COOKIE["uid"] = $rst["uid"];
-    		$_SESSION["uname"] = $rst["uname"];
-				$_SESSION["uemail"] = $rst["uemail"];
-				$_SESSION["upwd"] = $rst["upwd"];
-        $_SESSION["utel"] = $rst["utel"];
-        $_SESSION["uqq"] = $rst["uqq"];
-				$_SESSION["upower"] = $rst["upower"];
-        $_SESSION["uheader"] = $rst["uheader"];
-    	
+    $sqlqu = "select * from t_user where uemail= '".$email."'";
+    $numqu = $conne->getRowsNum($sqlqu);
+    if($numqu>=1){
+            $sql = "select * from t_user where uemail= '".$email."' and upwd='".$password."'  ";
+            $num = $conne->getRowsNum($sql);
+            if($num >= 1){
+            //如果存在
+            //echo "1";
+            $rst = $conne->getRowsRst($sql);
+            //print_r($rst);
+            $_SESSION["uid"] = $rst["uid"];
+            $_COOKIE["uid"] = $rst["uid"];
+                $_SESSION["uname"] = $rst["uname"];
+                    $_SESSION["uemail"] = $rst["uemail"];
+                    $_SESSION["upwd"] = $rst["upwd"];
+            $_SESSION["utel"] = $rst["utel"];
+            $_SESSION["uqq"] = $rst["uqq"];
+                    $_SESSION["upower"] = $rst["upower"];
+            $_SESSION["uheader"] = $rst["uheader"];
+            
 
-        $conne->close_conn();        
-        //判断是否为管理员
-        if($rst["upower"] == 9){
-            //$url = "../admin/index.php";
-            echo "<script charset='utf-8' type='text/javascript'>alert('管理员登陆!');window.location.href='../admin/index.php';</script>";    
-        }else{
-            echo_message("登录成功！" , 1);    
-        }
+            $conne->close_conn();        
+            //判断是否为管理员
+            if($rst["upower"] == 9){
+                //$url = "../admin/index.php";
+                echo "<script charset='utf-8' type='text/javascript'>alert('管理员登陆!');window.location.href='../admin/index.php';</script>";    
+            }else{
+                echo_message("登录成功！" , 1);    
+            }
 
 
-    }else if($num == 0){
-    	$conne->close_conn();
-    	echo_message("您的账户不存在！或密码错误！请重新登陆！" , 2);
+        }else if($num == 0){
+            $conne->close_conn();
+            echo_message("您的账户密码错误！请重新登录！" , 2);
+        }    
+    }else{
+        $conne->close_conn();
+        echo_message("您的邮箱不存在！请注册后再登录！" , 7);
     }
+
+
+    
 
 
     mysql_close();

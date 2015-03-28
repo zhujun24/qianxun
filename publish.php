@@ -1,5 +1,4 @@
-﻿
-<?php
+﻿<?php
 error_reporting(0);
 include_once "php/function.php";
 if(!isset($_SESSION)){ session_start();};
@@ -77,9 +76,11 @@ include_once "php/header.php";
                         <div class="form-group has-feedback">
                             <label for="timer" class="col-lg-4 control-label">捡到&丢失时间*</label>
 
-                            <div class="input-group date form_datetime col-lg-8" data-date="2015-01-01T00:00:00Z"
-                                 data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="width: 274px;position: relative;left: 15px;">
-                                <input id="timer" name="time" class="form-control" size="16" type="text" value="" readonly>
+                            <div class="input-group date form_datetime col-lg-8" data-date="2014-01-01T00:00:00Z"
+                                 data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
+                                <input id="timer" 
+                                name="time" 
+                                class="form-control" size="16" type="text" value="" readonly>
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
                             <input type="hidden" id="dtp_input1" value="">

@@ -39,7 +39,9 @@ if(!empty($_POST["search"])){
         <p>这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
 
         <p>
-            <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
+            <a href="introduction.html" class="btn btn-primary" role="button">阅读使用说明</a>
+            <a href="http://weibo.com" class="btn btn-primary btn-success" role="button"><span
+                    class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
     </div>
     <div class="row">
@@ -99,7 +101,7 @@ if(!empty($_POST["search"])){
                         if(empty($row['pimage'])){
                         					echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像' style='width: 100px; height: 100px;border-radius: 10px;'>
+                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -116,7 +118,7 @@ if(!empty($_POST["search"])){
                             	}else{
                         echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像' style='width: 100px; height: 100px;border-radius: 10px;'>
+                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -125,7 +127,7 @@ if(!empty($_POST["search"])){
                 <p>丢失地点：".$row['plocation']."</p>
                 <p>详细描述：".$row['pdetails']."。</p>
                 <a href='#'' class='thumbnail'>
-                                <img src='upload_images/".$row['pimage']."' alt='物品图片'>
+                                <img src='upload_images/".$row['pimage']."' data-src='holder.js/300x300' alt='物品图片'>
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>

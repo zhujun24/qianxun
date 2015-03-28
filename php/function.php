@@ -18,6 +18,8 @@ function echo_message($message , $url,$pid){
 		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='../info.php?pid=$pid';</script>";
 	}else if($url == 6){
 		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='comment.php';</script>";
+	}else if($url == 7){
+		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='../reg.php';</script>";
 	}
 }
 

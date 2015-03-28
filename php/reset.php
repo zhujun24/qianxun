@@ -10,7 +10,7 @@ if(!isset($_SESSION)){ session_start(); };
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,18 +66,34 @@ if(!isset($_SESSION)){ session_start(); };
     </div>
 </nav>
 <!-- Body Main -->
-<div class="container">
-<form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
+<div class="container" style="text-align:center">
+<!-- <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php"> -->
 <?php
+// echo "XXX";
+// echo $_POST['pass']."___".$_POST['password'];
+// echo $_POST['password1']."___".$_POST['password2'];
+
 if(!empty($_POST)){
     //$pass=$_POST["pass"];
     //$password=$_POST["password"];
-    $pass = trim($_POST['pass']);
+    $pass = $_POST['pass'];
     $password = md5(trim($_POST['password']));
+
     //密码前12位
     $pass = substr($pass , 0 , 12);
     $password = substr($password , 0 , 12);
 
+    // echo "<br>XXX";
+    // echo $pass."___".$password;
+
+
+    include_once "function.php";
+
+    if($pass != $password){
+        echo_message("原密码错误，请重新修改..." ,4);
+    }
+
+    
     // $password1=$_POST["password1"];
     // $password2=$_POST["password2"];
 
@@ -88,36 +104,34 @@ if(!empty($_POST)){
     $password2 = substr($password2 , 0 , 12);
 
     $uid=$_POST["uid"];
+
     
-    if( ($password==$pass) && ($password1==$password2)){
-        include_once "config.php";
-        include_once "conn.php";
-        include_once "function.php";
-        
-        $sql="update t_user set  upwd = '".$password1."'  where uid = '".$uid."' ";
+    include_once "config.php";
+    include_once "conn.php";
+    
+    
+    $sql="update t_user set  upwd = '".$password1."'  where uid = '".$uid."' ";
+    
+    $rowsNum = $conne->uidRst($sql);
+    if($rowsNum > 0){
+        echo "<h3>修改成功！</h3>";
+        $conne->close_conn();
+        echo_message("修改成功..." ,4);
+    }else{
 
-        
-        $rowsNum = $conne->uidRst($sql);
-        if($rowsNum > 0){
-            echo "<h3>修改成功！</h3>";
-            $conne->close_conn();
-            echo_message("修改成功..." ,4);
-        }else{
-            echo "修改失败！";
-            $conne->msg_error();
-            $conne->close_conn();
-            echo_message("请重新修改..." ,4);
-        }
-
-
+        echo "新密码与原密码一致！";
+        $conne->msg_error();
+        $conne->close_conn();
+        echo_message("请重新修改..." ,4);
     }
-    
 
+}else{
+    echo_message("请重新修改..." ,4);
 }     
 
 
 ?>
-</form>
+<!-- </form> -->
 </div>
 
 <!-- Footer -->

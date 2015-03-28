@@ -11,7 +11,7 @@ error_reporting(0);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,13 +86,16 @@ error_reporting(0);
     $pid=$_POST["pid"];
     
     //过滤敏感词
-    filter_word($_POST["cdetails"],$pid);
-    $cdetails=$_POST["cdetails"];
+    filter_word(trim($_POST["cdetails"]),$pid);
+    $cdetails=trim($_POST["cdetails"]);
+
 
     $psucceed = $_POST["psucceed"];
     $uid = $_SESSION['uid'];
     $ctime = date('Y-m-d H:i:s');
-        
+    
+
+    //成功找回
     if(!empty($psucceed)){
         include_once "config.php";
         $arr = mysql_fetch_assoc(mysql_query("select * from t_publish where pid='".$pid."' "));
@@ -121,24 +124,38 @@ error_reporting(0);
             echo_message("已成功找到！",5, $pid);  
         }
         
-    }else{
-        include_once "conn.php";    
-        $insql = "insert into t_comment(pid,uid,ctime,cdetails) values('$pid','$uid','$ctime','$cdetails') ";
-        $conne = new opmysql();
-        //执行插入
-        $rowsNum = $conne->uidRst($insql);
-        if($rowsNum)
-        {
+    }
+    else{    
+        //评论验证
+        if(empty($cdetails)){
+            //echo_message("评论内容不能为空！",5, $pid);   
+            echo "<script type='text/javascript'>alert('评论内容不能为空！');window.history.go(-1)</script>";
+        }
+        else if(strlen($cdetails) >= "50"){
+            //echo_message("评论内容不能大于50字！",5, $pid);   
+            echo "<script type='text/javascript'>alert('评论内容不能大于50字！');window.history.go(-1)</script>";
+        }else if(empty($uid)){
+            echo "<script type='text/javascript'>alert('注册后才能评论！');window.history.go(-1)</script>";
+        }
+        else{
+            include_once "conn.php";
+            $insql = "insert into t_comment(pid,uid,ctime,cdetails) values('$pid','$uid','$ctime','$cdetails') ";
+            $conne = new opmysql();
+            //执行插入
+            $rowsNum = $conne->uidRst($insql);
+            if($rowsNum)
+            {
+                $conne->close_conn();
+                echo_message("评论成功！",5, $pid);   
+            }else {
+                //出错
+                //echo $conne->msg_error();   
+            }
+
             $conne->close_conn();
-            echo_message("评论成功！",5, $pid);   
-        }else {
-            //出错
-            //echo $conne->msg_error();   
         }
 
-
         
-        $conne->close_conn();
     }
 
 }

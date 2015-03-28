@@ -8,10 +8,10 @@ error_reporting(0);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="refresh" content="2; url='../../index.php' ">
+    <meta http-equiv="refresh" content="2; url='../../login.php' ">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,7 +92,8 @@ if($row){
 		//echo "1激活成功！";
 		if(mysql_affected_rows($link)!=1) die(0);
 		//echo "2激活成功！";
-		$msg = '<center><h3>激活成功！2s后跳转至首页</h3></center>';
+		$msg = '<center><h3>激活成功！2s后跳转至登录页面</h3></center>';
+
 		//echo "3激活成功！";
 	}
 }else{
