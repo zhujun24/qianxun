@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/reg.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,7 +102,7 @@ include_once "php/header.php";
                     <div class="col-sm-offset-2 col-sm-3">
                         <button id="reg" type="button" class="btn btn-primary"> 立即注册</button>
 
-                        <a style="margin-left:10px;" class="btn btn-default" role="button" href="introduction.html">阅读使用说明</a>
+                        <a style="margin-left:10px;" class="btn btn-default" role="button" href="introduction.php">阅读使用说明</a>
                     </div>
                 </div>
             </form>

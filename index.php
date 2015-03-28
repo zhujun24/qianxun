@@ -28,7 +28,7 @@ include_once "php/header.php";
 
         <h1>你好 欢迎来到千寻网！</h1>
 
-        <p>这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
+        <p style="color: #5bc0de;">这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
 
         <p>
             <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
