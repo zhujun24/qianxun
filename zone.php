@@ -69,7 +69,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 <div class="container heropic">
     <div class="left-info">
         <img src="upload_images/head_photo/<?php 
-        echo $uheader;?>" style="width:200px;height:200px;"class="img-circle pull-left">
+        echo $uheader;?>" style="width:180px;height:180px;border-radius: 10px;margin-right: 10px;"class="img-circle pull-left">
         
     </div>
     <div class="right-info">
@@ -80,19 +80,14 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
             <span class="h3"><?php echo $uemail;?></span>
         </div>
         <div>
-        <!--     <form action="php/zone.php" enctype="multipart/form-data" class="form-inline col-lg-5" method="post">
-                <input type="file" name="uploadfile" id="doc" onchange="javascript:setImagePreview();"
-                       class="filestyle" data-icon="false" data-buttonText="点击选择头像"
-                       data-buttonName="btn-info">
-                <button class="btn btn-primary xiugaitouxiang" type="submit">确认上传</button>
-            </form> -->
-        <input type="file" name="file_upload" id="file_upload" />
-        <!--<p><a href="javascript:$('#file_upload').uploadify('upload','*');">上传</a> -->
-        <!--动态传值  $('#file_upload').uploadify('settings', 'formData', {'typeCode':document.getElementById('id_file').value}); -->
-        <p><a href="javascript:$('#file_upload').uploadify('settings', 'formData', {'typeCode':document.getElementById('id_file').value});$('#file_upload').uploadify('upload','*')"><button class="btn btn-primary" type="submit">确认上传</button></a>
-        <a href="javascript:$('#file_upload').uploadify('cancel','*')"><button class="btn btn-primary " type="submit">重置上传队列</button></a>
-        </p>
-        <input type="hidden" value="1215154" name="tmpdir" id="id_file">            
+            <input type="file" class="btn btn-default" name="file_upload" id="file_upload" />
+            <!--<p><a href="javascript:$('#file_upload').uploadify('upload','*');">上传</a> -->
+            <!--动态传值  $('#file_upload').uploadify('settings', 'formData', {'typeCode':document.getElementById('id_file').value}); -->
+            <p>
+                <a href="javascript:$('#file_upload').uploadify('settings', 'formData', {'typeCode':document.getElementById('id_file').value});$('#file_upload').uploadify('upload','*')"><button class="btn btn-primary" type="submit">确认上传</button></a>
+                <a href="javascript:$('#file_upload').uploadify('cancel','*')"><button class="btn btn-success" type="submit">重置上传队列</button></a>
+            </p>
+            <input type="hidden" value="1215154" name="tmpdir" id="id_file">
         </div>
     </div>
 </div>
@@ -172,8 +167,6 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                 <li><a href="#success" role="tab" data-toggle="tab">成功事例</a></li>
             </ul>
 
-
-
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="zhaoling">
@@ -189,7 +182,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                         		{
                         			echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -199,12 +192,13 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                 <p>详细描述：".$row['pdetails']."。</p>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a class='pull-right'>&nbsp;</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";
                         		}else
                         		{
                         			echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -217,6 +211,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a class='pull-right'>&nbsp;</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";			
                         		}    
                             
@@ -289,7 +284,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                         		{
                         			echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -299,12 +294,13 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                 <p>详细描述：".$row['pdetails']."。</p>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a class='pull-right'>&nbsp;</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";
                         		}else
                         		{
                         			echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -317,6 +313,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a class='pull-right'>&nbsp;</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a></div>";			
                         		}    
                         }
@@ -374,7 +371,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 
                         echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ctime']."</small>
@@ -418,7 +415,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 															if(empty($row['pimage'])){
 																echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -428,11 +425,12 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                 
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
-                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>已成功找到！</a></div>";
+                        <a class='pull-right'>&nbsp;</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button' disabled>已成功找到！</a></div>";
 															}else{
 																	echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像'>
+                <img src='upload_images/head_photo/$uheader' class='media-object' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -444,7 +442,8 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
-                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>已成功找到！</a></div>";
+                        <a class='pull-right'>&nbsp;</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button' disabled>已成功找到！</a></div>";
 															}
 															
                         
