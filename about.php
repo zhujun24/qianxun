@@ -39,7 +39,7 @@ include_once "php/header.php";
             </div>
             <div class="media-body">
                 <h3 class="media-heading" style="color: #337ab7">朱俊</h3>
-                <h4>来自安徽芜湖，合肥工业大学数学学院信息与计算科学12-2班。现任合肥工业大学大学生发展网络教育中心技术部部长。性格活泼开朗，具有良好的团队意识，热爱运动。希望带领千寻网团队共同努力，为工大学子提供更好的服务</h4>
+                <h4>此人比较低调</h4>
             </div>
         </div>
         <br/>
@@ -81,13 +81,13 @@ include_once "php/header.php";
         <br/>
         <div class="media">
             <div class="media-left">
-                <a href="http://weibo.com/zhujun87654321" target="_blank" title="朱俊的微博">
-                    <img class="media-object" src="images/team/zhujun.jpg" style="width: 100px; height: 100px; border-radius:10px;">
+                <a href="http://weibo.com/3128539621" target="_blank" title="朱俊的微博">
+                    <img class="media-object" src="images/team/shijiakui.jpg" style="width: 100px; height: 100px; border-radius:10px;">
                 </a>
             </div>
             <div class="media-body">
-                <h3 class="media-heading" style="color: #d9534f">菊花奎</h3>
-                <h4>来自安徽芜湖，合肥工业大学数学学院信息与计算科学12-2班。现任合肥工业大学大学生发展网络教育中心技术部部长。性格活泼开朗，具有良好的团队意识，热爱运动。</h4>
+                <h3 class="media-heading" style="color: #d9534f">石家奎</h3>
+                <h4>此人比较低调</h4>
             </div>
         </div>
     </div>
