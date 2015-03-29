@@ -99,7 +99,7 @@ if(!empty($_POST["search"])){
                         if(empty($row['pimage'])){
                         					echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
+                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -110,13 +110,14 @@ if(!empty($_POST["search"])){
                 
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a class='pull-right'>&nbsp;</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
             
         </div>";    	
                             	}else{
                         echo "<div class='media'>
             <a class='pull-left' href='#'>
-                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像'>
+                <img class='media-object' src='upload_images/head_photo/".$uheader." ' alt='头像' style='width: 100px;height: 100px;border-radius: 10px;'>
             </a><div class='media-body'>
                 <h4 class='media-heading'>".$uname."
             <small>&nbsp;&nbsp;发表于".$row['ptime']."</small>
@@ -129,6 +130,7 @@ if(!empty($_POST["search"])){
                             </a>
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
+                        <a class='pull-right'>&nbsp;</a>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
             
         </div>";
