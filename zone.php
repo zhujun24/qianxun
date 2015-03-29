@@ -9,7 +9,7 @@ include_once "php/sec.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/zone.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="uploadify/uploadify.css"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

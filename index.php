@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,12 +34,10 @@ include_once "php/config.php";
 
         <h1>你好 欢迎来到千寻网！</h1>
 
-        <p>这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
+        <p style="color: #5bc0de">这里是千寻网，专注于合肥工业大学失物招领，我们致力于帮每一件宝贝找到它的主人！</p>
 
         <p>
             <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
-            <a href="http://weibo.com/u/5038648787" class="btn btn-primary btn-success" role="button"><span
-                    class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
     </div>
     <div class="row">
