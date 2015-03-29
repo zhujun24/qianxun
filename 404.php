@@ -7,6 +7,7 @@
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
     <style>
         #bottom {width: 100%;position: absolute; bottom: 0;}
         #bottom p {text-align: center; line-height: 30px;margin: 5px 0;}
