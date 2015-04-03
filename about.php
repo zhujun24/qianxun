@@ -40,13 +40,15 @@ include_once "php/header.php";
             <div class="media-body">
                 <h3 class="media-heading" style="color: #337ab7">朱俊</h3>
                 <h4>此人比较低调</h4>
+                <h4>个人博客: <a href="http://zhujun24.github.io/">http://zhujun24.github.io/</a></h4>
             </div>
         </div>
         <br/>
         <div class="media">
             <div class="media-body">
                 <h3 class="media-heading" style="color: #5cb85c">王世卿</h3>
-                <h4>来自江苏泰州，合肥工业大学软件学院12-2班。性格幽默风趣，主要从事后台开发，涉及前端，技术宅，喜欢跑步和羽毛球。大二时荣获校三等奖学金，并在大二暑假期间在合肥科鼎公司实习，从事Web开发，和同学共同合作完成了几个项目，后加入大学生发展网络教育中心，并和同学一起帮助老师做的与web开发相关的项目</h4>
+                <h4>此人比较低调</h4>
+                <h4>个人博客: <a href="http://blog.hfutfind.com/">http://blog.hfutfind.com/</a></h4>
             </div>
             <div class="media-right">
                 <a href="http://blog.hfutfind.com" target="_blank" title="王世卿的博客">
