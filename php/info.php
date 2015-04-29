@@ -135,7 +135,8 @@ error_reporting(0);
             //echo_message("评论内容不能大于50字！",5, $pid);   
             echo "<script type='text/javascript'>alert('评论内容不能大于50字！');window.history.go(-1)</script>";
         }else if(empty($uid)){
-            echo "<script type='text/javascript'>alert('注册后才能评论！');window.history.go(-1)</script>";
+            //echo "<script type='text/javascript'>alert('注册后才能评论！');window.history.go(-1)</script>";
+            echo "<script charset='utf-8' type='text/javascript'>alert('登录后才能评论！');window.location.href='../login.php';</script>";
         }
         else{
             include_once "conn.php";
