@@ -195,7 +195,7 @@ if ($ptype == 1) {
         ?>
 
         <div class="media">
-            <form class="form-horizontal" role="form" action="php/info.php" method="post">
+            <form class="form-horizontal publish" role="form" action="php/info.php" method="post">
                 <input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
                 <div class="form-group">
@@ -205,7 +205,7 @@ if ($ptype == 1) {
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-info">发表评论</button>
+                        <button id="publish" class="btn btn-info">发表评论</button>
                     </div>
                 </div>
             </form>
@@ -224,6 +224,7 @@ include_once "php/footer.php";
 <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="js/info.js"></script>
 
 <!-- hfutfind.com Baidu tongji analytics -->
 <script type="text/javascript">
