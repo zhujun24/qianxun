@@ -83,11 +83,11 @@ $(document).ready(function (){
     $('#alter').click(function () {
         if(regexEnum.email.test($('#email').val())==true&&regexEnum.name.test($('#name').val())==true&&regexEnum.phone.test($('#phone').val())&&(regexEnum.qq.test($('#qq').val())||$('#qq').val()=='')) {
             $('#alter').html('提交ing...');
-            alert('符合要求,可以提交（用于测试）,确定后跳转到未完工的页面');
+            //alert('符合要求,可以提交（用于测试）,确定后跳转到未完工的页面');
             $('.form-horizontal').submit();
             return true;
         } else{
-            alert('不符合要求,不可以提交（用于测试）');
+            alert('格式不符合要求');
             return false;
         };
     });

@@ -14,3 +14,4 @@ body{padding-top:70px;}
 .right-info{/*height: 128px;*/padding-top: 20px;padding-left: 138px;}
 .xiugai{display: none;}
 .bootstrap-filestyle.input-group{width:250px;margin-left:-15px;margin-top:10px;}
+.col-sm-9 p.form-control-static{font-size:16px;}
