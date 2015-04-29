@@ -4,7 +4,7 @@ getCode(4,60,20);
 
 function getCode($num,$w,$h) {
 	// 去掉了 0 1 O l 等
-	$str = "23456789abcdefghijkmnpqrstuvwxyz";
+	$str = "23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ";
 	$code = '';
 	for ($i = 0; $i < $num; $i++) {
 		$code .= $str[mt_rand(0, strlen($str)-1)];
