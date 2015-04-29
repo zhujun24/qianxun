@@ -75,6 +75,7 @@ include_once "php/header.php";
                         <div class="form-group has-feedback">
                             <label for="timer" class="col-lg-4 control-label">捡到&丢失时间*</label>
 
+<<<<<<< HEAD
                             <!-- <div class="input-group date form_datetime col-lg-7" data-date="2015-01-01T00:00:00Z"data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
                                 <input id="timer" name="time" 
                                 class="form-control" size="16" type="text" value="" readonly style="width: 234px;margin-left: 15px;"> -->
@@ -82,12 +83,15 @@ include_once "php/header.php";
                                 <input id="timer" name="time" class="form-control" size="16" 
                             type="text" value="" readonly style="width: 234px;margin-left: 15px;">
 
+=======
+                            <div class="input-group date form_datetime col-lg-7" data-date="" data-link-field="dtp_input1">
+                                <input id="timer" name="time" class="form-control" size="16" type="text" value="" readonly style="width: 234px;margin-left: 15px;">
+>>>>>>> origin/master
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
                             <input type="hidden" id="dtp_input1" value="">
                         </div>
                         <div class="form-group">
-                            <!--label for="doc" class="col-lg-4 control-label">物品图片*</label-->
                             <label for="doc" class="col-lg-4 control-label">物品图片&nbsp;&nbsp;<p>(若不填，则请尽可能给出详细描述)</p></label>
 
                             <div class="col-lg-8">
