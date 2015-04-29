@@ -20,6 +20,10 @@ function echo_message($message , $url,$pid){
 		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='comment.php';</script>";
 	}else if($url == 7){
 		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='../reg.php';</script>";
+	}elseif($url==-1){
+    	echo"<script>alert('$message');history.go(-1);</script>";  
+  	}else if($url == 8){
+		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='login.php';</script>";
 	}
 }
 

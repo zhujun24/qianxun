@@ -125,10 +125,21 @@ if ($ptype == 1) {
                 }
                 ?>
             </div>
+
+            
             <?php
             //include_once "php/config.php";
             $arr1 = mysql_fetch_assoc(mysql_query("select * from t_publish where pid='" . $pid . "' "));
             $psucceed = $arr1["psucceed"];
+            $uid = $arr1["uid"];
+            if($uid ==$_SESSION['uid']){
+
+            ?>
+            
+            <a href='php/deleinfo.php?id=<?php echo $pid;?>'><button class="btn btn-primary pull-right">删除信息!</button></a>
+            <a class='pull-right'>&nbsp;</a>
+            <?php
+            }
             if ($psucceed == 1) {
                 ?>
 

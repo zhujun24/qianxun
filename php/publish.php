@@ -73,8 +73,9 @@
 
 <?php
  //print_r($_GET);
- //print_r($_POST);
- //print_r($_FILES['uploadfile']);
+ // print_r($_POST);
+ // print_r($_FILES['uploadfile']);
+ // print_r($_FILES);
  header("Content-type:text/html;charset=utf-8");
  include_once "config.php";
  include_once "function.php";
@@ -83,9 +84,9 @@
 //设置上传目录
 $path = "../upload_images/";    
 
-if (!empty($_FILES)) {
+if($_FILES['uploadfile']['error']!=4){
 
-    
+    print_r($_FILES);
     //得到上传的临时文件流
     $tempFile = $_FILES['uploadfile']['tmp_name'];
     //echo $tempFile;
@@ -112,13 +113,24 @@ if (!empty($_FILES)) {
        mkdir($path);
     include_once "config.php";
 
-    $pitem = trim($_POST['item']);
-    $pname = trim($_POST['name']);
-    $plocation = trim($_POST['location']);
-    $pdate = trim($_POST['time']);
+    //$pitem = trim($_POST['item']);
+    $pitem = stripslashes(trim($_POST['item']));
+    $pitem = strip_tags($pitem);
+    //$pname = trim($_POST['name']);
+    $pname = stripslashes(trim($_POST['name']));
+    $pname = strip_tags($pname);
+    //$plocation = trim($_POST['location']);
+    $plocation = stripslashes(trim($_POST['location']));
+    $plocation = strip_tags($plocation);
+    //$pdate = trim($_POST['time']);
+    $pdate = stripslashes(trim($_POST['time']));
+    $pdate = strip_tags($pdate);
+    
     $ptime = date('Y-m-d H:i:s');
-    $pdetails = trim($_POST['details']);
-    $ptype = trim($_POST['inlineRadioOptions']);
+
+    //$pdetails = trim($_POST['details']);
+    $pdetails = stripslashes(trim($_POST['details']));
+    $pdetails = strip_tags($pdetails);
 
     $query = 'insert into t_publish(uid,pitem,pname,plocation,ptime,pdetails,ptype,pdate) values (
     "'.$_SESSION['uid'].'","'.$pitem.'","'.$pname.'",
@@ -143,12 +155,54 @@ if (!empty($_FILES)) {
         //echo "原文件名".$fileName."上传成功！新文件名".$imagename."<br>请手动F5刷新!";
         include_once "function.php";
         mysql_close();
+        //echo "success";
         echo_message("信息发布成功！",1);
     }else{
         //echo $fileName."上传失败！";
         include_once "function.php";
         mysql_close();
-        echo_message("信息上传失败！",1);
+        //echo "fail";
+        echo_message("信息上传失败！",-1);
+    }
+}else{
+    include_once "config.php";
+
+    //$pitem = trim($_POST['item']);
+    $pitem = stripslashes(trim($_POST['item']));
+    $pitem = strip_tags($pitem);
+    //$pname = trim($_POST['name']);
+    $pname = stripslashes(trim($_POST['name']));
+    $pname = strip_tags($pname);
+    //$plocation = trim($_POST['location']);
+    $plocation = stripslashes(trim($_POST['location']));
+    $plocation = strip_tags($plocation);
+    //$pdate = trim($_POST['time']);
+    $pdate = stripslashes(trim($_POST['time']));
+    $pdate = strip_tags($pdate);
+    
+    $ptime = date('Y-m-d H:i:s');
+
+    //$pdetails = trim($_POST['details']);
+    $pdetails = stripslashes(trim($_POST['details']));
+    $pdetails = strip_tags($pdetails);
+
+    $ptype = trim($_POST['inlineRadioOptions']);
+
+    $query = 'insert into t_publish(uid,pitem,pname,plocation,ptime,pdetails,ptype,pdate) values (
+    "'.$_SESSION['uid'].'","'.$pitem.'","'.$pname.'",
+    "'.$plocation.'","'.$ptime.'","'.$pdetails.'",
+    "'.$ptype.'","'.$pdate.'")';
+    mysql_query($query , $db) or die(mysql_error($db));
+    
+    include_once "function.php";
+    if(mysql_affected_rows()){
+        mysql_close();
+        //echo "success";
+        echo_message("信息发布成功！",1);
+    }else{
+        mysql_close();
+        //echo "fail";
+        echo_message("信息上传失败！",-1);
     }
 }
     

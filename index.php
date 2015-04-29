@@ -88,7 +88,7 @@ include_once "php/config.php";
                         </thead>
                         <tbody>
                 <?php
-										include_once "php/config.php";
+					include_once "php/config.php";
                     $sql = "select * from t_publish where ptype = '1'  order by pid desc limit 8";
                     // $rowsArray = $conne -> getRowsArray($sql);
                     $result = mysql_query($sql);
@@ -100,14 +100,14 @@ include_once "php/config.php";
                             if(($i)%2 == 1){
                         echo "<tr><td>".$row['pitem']."</td>
                             <td>".mb_substr($row['pname'] , 0 , 5,'utf-8')."</td>
-                            <td>".$row['plocation']."</td>
+                            <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
                             <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
                         }else {
                             echo "<tr class='info'><td>".$row['pitem']."</td>
                             <td>".mb_substr($row['pname'] , 0 , 5,'utf-8')."</td>
-                            <td>".$row['plocation']."</td>
+                            <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
                             <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
@@ -148,14 +148,14 @@ include_once "php/config.php";
                             if(($i)%2 == 1){
                         echo "<tr><td>".$row['pitem']."</td>
                             <td>".mb_substr($row['pname'] , 0 , 5,'utf-8')."</td>
-                            <td>".$row['plocation']."</td>
+                            <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
                             <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
                         }else {
                             echo "<tr class='info'><td>".$row['pitem']."</td>
                             <td>".mb_substr($row['pname'] , 0 , 5,'utf-8')."</td>
-                            <td>".$row['plocation']."</td>
+                            <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
                             <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";

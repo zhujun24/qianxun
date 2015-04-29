@@ -19,6 +19,11 @@
 <!-- Head Navbar -->
 <?php
 include_once "php/header.php";
+include_once "php/conn.php";
+include_once "php/config.php";
+
+    $result = mysql_query("SELECT * FROM t_publish where psucceed='1' ");
+    $num_rows = mysql_num_rows($result);
 ?>
 <!-- Body Main -->
 <div class="container">
@@ -46,7 +51,7 @@ include_once "php/header.php";
                     <br/>
                     <a href="publish.php" class="btn btn-info btn-lg btn-block" role="button">我捡到宝贝啦</a>
 
-                    <h3>已成功帮<span>88</span>件宝贝找到主人!</h3>
+                    <h3>已成功帮<span><?php echo $num_rows;?></span>件宝贝找到主人!</h3>
 
                     <h3>在工大 失物招领就上千寻网!</h3>
                 </div>
@@ -60,10 +65,15 @@ include_once "php/header.php";
                     if($result&&mysql_num_rows($result)>0){
                     while ($row = mysql_fetch_array($result)) {
                             $uid = $row["uid"];
+                            $psucceed = $row["psucceed"];
+                            if($psucceed == 1)
+                                $psucceed="已成功找到！";
+                            else
+                                $psucceed="未成功找到！";
 
-										        $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
-										        $uname = $arr['uname'];
-										        $uheader = $arr['uheader'];
+					        $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$uid."' "));
+					        $uname = $arr['uname'];
+					        $uheader = $arr['uheader'];
                             $pid = $row["pid"];
                             
                             if(empty($row['pimage'])){
@@ -81,7 +91,7 @@ include_once "php/header.php";
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
                         <a class='pull-right'>&nbsp;</a>
-                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>".$psucceed."</a>
             
         </div>";    	
                             	}else{
@@ -101,7 +111,7 @@ include_once "php/header.php";
                         </div>
                         <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>查看详情</a>
                         <a class='pull-right'>&nbsp;</a>
-                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>成功找到？</a>
+                        <a href='info.php?pid=$pid' class='btn btn-primary pull-right' role='button'>".$psucceed."</a>
             
         </div>";
       														}
