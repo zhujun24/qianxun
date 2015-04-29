@@ -1,9 +1,11 @@
 ﻿<?php
 error_reporting(0);
 include_once "php/function.php";
-if(!isset($_SESSION)){ session_start();};
-if(empty($_SESSION['uid'])){
-    echo_message("请先注册登录后，才可以发布信息！",8);
+if (!isset($_SESSION)) {
+    session_start();
+};
+if (empty($_SESSION['uid'])) {
+    echo_message("请先注册登录后，才可以发布信息！", 8);
 }
 ?>
 <!DOCTYPE html>
@@ -40,7 +42,7 @@ include_once "php/header.php";
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal col-lg-6" id="publishform" role="form" action="php/publish.php"
-                    method="post" enctype="multipart/form-data" >
+                          method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="col-lg-4 control-label">物品类型*</label>
 
@@ -67,35 +69,30 @@ include_once "php/header.php";
                             <label for="place" class="col-lg-4 control-label">捡到&丢失地点*</label>
 
                             <div class="col-lg-8">
-                                <input name="location" 
-                                type="text" class="form-control" id="place" placeholder="地点">
+                                <input name="location"
+                                       type="text" class="form-control" id="place" placeholder="地点">
                                 <span class="help-inline">地点不能为空</span>
                             </div>
                         </div>
                         <div class="form-group has-feedback">
-                            <label for="timer" class="col-lg-4 control-label">捡到&丢失时间*</label>
+                            <label for="timer" class="col-lg-4 control-label">捡到&amp;丢失时间*</label>
 
-<<<<<<< HEAD
-                            <!-- <div class="input-group date form_datetime col-lg-7" data-date="2015-01-01T00:00:00Z"data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
-                                <input id="timer" name="time" 
-                                class="form-control" size="16" type="text" value="" readonly style="width: 234px;margin-left: 15px;"> -->
-                            <div class="input-group date form_datetime col-lg-7" data-date="" data-link-field="dtp_input1">
-                                <input id="timer" name="time" class="form-control" size="16" 
-                            type="text" value="" readonly style="width: 234px;margin-left: 15px;">
+                            <div class="input-group date form_datetime col-lg-7" data-date=""
+                                 data-link-field="dtp_input1">
+                                <input id="timer" name="time" class="form-control" size="16" type="text" value=""
+                                       readonly="" style="width: 234px;margin-left: 15px;">
 
-=======
-                            <div class="input-group date form_datetime col-lg-7" data-date="" data-link-field="dtp_input1">
-                                <input id="timer" name="time" class="form-control" size="16" type="text" value="" readonly style="width: 234px;margin-left: 15px;">
->>>>>>> origin/master
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
                             <input type="hidden" id="dtp_input1" value="">
                         </div>
                         <div class="form-group">
-                            <label for="doc" class="col-lg-4 control-label">物品图片&nbsp;&nbsp;<p>(若不填，则请尽可能给出详细描述)</p></label>
+                            <label for="doc" class="col-lg-4 control-label">物品图片&nbsp;&nbsp;<p>(若不填，则请尽可能给出详细描述)</p>
+                            </label>
 
                             <div class="col-lg-8">
-                                <input type="file" name="uploadfile" id="doc" onchange="javascript:setImagePreview();"
+                                <input type="file" name="uploadfile" id="doc"
+                                       onchange="javascript:setImagePreview();"
                                        class="form-control filestyle" data-icon="false" data-buttonText="上传图片"
                                        data-buttonName="btn-primary">
                                 <span class="help-inline"></span>
@@ -105,10 +102,10 @@ include_once "php/header.php";
                             <label for="textarea" class="col-lg-4 control-label">详情描述*</label>
 
                             <div class="col-lg-8">
-                                <textarea 
-                                name="details" 
-                                id="textarea" class="form-control" rows="6"
-                                          placeholder="详细说明失物招领信息，不超过200字"></textarea>
+                                <textarea
+                                    name="details"
+                                    id="textarea" class="form-control" rows="6"
+                                    placeholder="详细说明失物招领信息，不超过200字"></textarea>
                                 <span id="num" class="help-inline">您还可以输入200字</span>
                             </div>
                         </div>
@@ -153,7 +150,7 @@ include_once "php/header.php";
 
 <!-- Footer -->
 <?php
-    include_once "php/footer.php";
+include_once "php/footer.php";
 ?>
 
 
@@ -169,9 +166,9 @@ include_once "php/header.php";
 
 <!-- hfutfind.com Baidu tongji analytics -->
 <script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
 
 </script>
 
