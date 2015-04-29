@@ -31,8 +31,9 @@ if (!isset($_SESSION)) {
 include_once "php/header.php";
 
 include_once "php/conn.php";
-mysql_query("set names 'utf8'");    
-$sql = "select * from t_publish where pid= '" . $_GET['pid'] . "' ";
+mysql_query("set names 'utf8'");
+$pid = base64_decode(trim($_GET["pid"]));    
+$sql = "select * from t_publish where pid= '".$pid."' ";
 $num = $conne->getRowsNum($sql);
 if ($num >= 1)
 {

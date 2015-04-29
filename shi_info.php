@@ -105,6 +105,7 @@ include_once "php/config.php";
 							$uname = $arr['uname'];
 							$uheader = $arr['uheader'];
                             $pid = $row["pid"];
+                            $pid = base64_encode($pid);
                             
                         if(empty($row['pimage'])){
                         					echo "<div class='media'>

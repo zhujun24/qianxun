@@ -96,6 +96,8 @@ include_once "php/config.php";
                         $i = 0;
                         while ($row = mysql_fetch_array($result)) {
                             //if($row['pdetails'].)
+                            $pid = $row['pid'];
+                            $pid = base64_encode($pid);
                             $i++;
                             if(($i)%2 == 1){
                         echo "<tr><td>".$row['pitem']."</td>
@@ -103,14 +105,14 @@ include_once "php/config.php";
                             <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
-                            <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
+                            <td><a href='info.php?pid=".$pid."'>查看具体</a></td></tr>";
                         }else {
                             echo "<tr class='info'><td>".$row['pitem']."</td>
                             <td>".mb_substr($row['pname'] , 0 , 5,'utf-8')."</td>
                             <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
-                            <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
+                            <td><a href='info.php?pid=".$pid."'>查看具体</a></td></tr>";
                         }
                     }
                 }
@@ -144,6 +146,8 @@ include_once "php/config.php";
                         $i = 0;
                         while ($row = mysql_fetch_array($result)) {
                             //if($row['pdetails'].)
+                            $pid = $row['pid'];
+                            $pid = base64_encode($pid);
                             $i++;
                             if(($i)%2 == 1){
                         echo "<tr><td>".$row['pitem']."</td>
@@ -151,14 +155,14 @@ include_once "php/config.php";
                             <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
-                            <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
+                            <td><a href='info.php?pid=".$pid."'>查看具体</a></td></tr>";
                         }else {
                             echo "<tr class='info'><td>".$row['pitem']."</td>
                             <td>".mb_substr($row['pname'] , 0 , 5,'utf-8')."</td>
                             <td>".mb_substr($row['plocation'] , 0 , 9,'utf-8')."</td>
                             <td>".mb_substr($row['ptime'] , 0 , 10,'utf-8')."</td>
                             <td>".mb_substr($row['pdetails'] , 0 , 16,'utf-8')."</td>
-                            <td><a href='info.php?pid=".$row['pid']."'>查看具体</a></td></tr>";
+                            <td><a href='info.php?pid=".$pid."'>查看具体</a></td></tr>";
                         }
                     }
                 }
