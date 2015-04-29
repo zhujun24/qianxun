@@ -87,5 +87,11 @@ function filter_arr($arr){
 
 }
 
+//防XSS过滤
+function RemoveXSS($value){
+	$value = stripslashes(trim($value));
+    $value = strip_tags($value);
+    return $value;
+}
 
 ?>

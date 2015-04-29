@@ -88,7 +88,7 @@ error_reporting(0);
     //过滤敏感词
     filter_word(trim($_POST["cdetails"]),$pid);
     $cdetails=trim($_POST["cdetails"]);
-
+    $cdetails=RemoveXSS($cdetails);
 
     $psucceed = $_POST["psucceed"];
     $uid = $_SESSION['uid'];
@@ -136,7 +136,18 @@ error_reporting(0);
             echo "<script type='text/javascript'>alert('评论内容不能大于50字！');window.history.go(-1)</script>";
         }else if(empty($uid)){
             //echo "<script type='text/javascript'>alert('注册后才能评论！');window.history.go(-1)</script>";
-            echo "<script charset='utf-8' type='text/javascript'>alert('登录后才能评论！');window.location.href='../login.php';</script>";
+            //$cdetails = urlencode($cdetails);
+            //$details = urlencode($_POST["cdetails"]);
+            //echo $details;
+            //echo $cdetails;
+            
+            //$url = base64_encode("pid=$pid&cdetails=$cdetails");
+            //echo $url."<br>";
+            //echo base64_decode($url);
+            $pid = base64_encode($pid);
+            $cdetails = base64_encode($cdetails);
+            echo "<script charset='utf-8' type='text/javascript'>alert('登录后才能评论！')</script>";
+            echo "<script>window.location.href='../login.php?pid=$pid&cdetails=$cdetails';</script>";
         }
         else{
             include_once "conn.php";

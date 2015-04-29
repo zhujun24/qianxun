@@ -78,6 +78,7 @@ if(!empty($_POST)){
     // $email=$_POST["email"];
     // $password=$_POST["password"];
     $email = trim($_POST['email']);
+    $email = strtolower($email);
     $password = md5(trim($_POST['password']));
     //密码前12位
     $password = substr($password , 0 , 12);
@@ -115,7 +116,22 @@ if(!empty($_POST)){
                 //$url = "../admin/index.php";
                 echo "<script charset='utf-8' type='text/javascript'>alert('管理员登陆!');window.location.href='../admin/index.php';</script>";    
             }else{
-                echo_message("登录成功！" , 1);    
+                //echo_message("登录成功！" , 1); 
+                //print_r($_POST);
+                //echo $_POST["pid"];  
+                $pid = base64_decode($_POST["pid"]);
+                $cdetails = base64_decode($_POST["cdetails"]);
+                if(!empty($pid) && is_numeric($pid)){
+                    
+                    // echo $pid;
+                    // echo $cdetails;
+                    //echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='../info.php?pid=$pid';</script>";
+                    //echo_message("登录成功！",5, $pid,$cdetails);   
+                    echo "<script charset='utf-8' type='text/javascript'>alert('登录成功！');window.location.href='../info.php?pid=$pid&cdetails=$cdetails';</script>";
+                }else{
+                    //echo "success";
+                    echo_message("登录成功！" , 1);    
+                }
             }
 
 

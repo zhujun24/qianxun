@@ -179,7 +179,7 @@ if ($ptype == 1) {
 									                <h4 class='media-heading'>" . $uname . "
 									            <small>&nbsp;&nbsp;发表于" . $row['ctime'] . "</small>
 									                </h4>
-									                <p>" . $row['cdetails'] . "。</p>
+									                <p>" . $row['cdetails'] . "</p>
 									            </div>
         											</div>";
             }
@@ -200,7 +200,18 @@ if ($ptype == 1) {
 
                 <div class="form-group">
                     <div class="col-sm-12">
+                        <?php
+                            if(empty($_GET["cdetails"])){
+                        ?>
                         <textarea name="cdetails" class="form-control" rows="3" placeholder="我要说点啥……"></textarea>
+                        <?php
+                            }else{
+                            $cdetails = trim($_GET["cdetails"]);
+                        ?>
+                        <textarea name="cdetails" class="form-control" rows="3"><?php echo $cdetails;?></textarea>
+                        <?
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -225,7 +236,6 @@ include_once "php/footer.php";
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/info.js"></script>
-
 <!-- hfutfind.com Baidu tongji analytics -->
 <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");

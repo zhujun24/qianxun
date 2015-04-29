@@ -9,13 +9,13 @@
         $sql = "delete from t_publish where id='$id'";
         mysql_query($sql);
         if(mysql_affected_rows()){
-            echo_message("删除成功！",3);
+            echo_message("删除成功！",1);
         }else{
-            echo_message("删除失败！",3);
+            echo_message("删除失败！",1);
         }
         mysql_close();
         
     }else{
-        echo_message("文章不存在！",3);
+        echo_message("文章不存在！",1);
     }
 ?>

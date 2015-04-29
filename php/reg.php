@@ -76,8 +76,10 @@ error_reporting(0);
 <?php
 error_reporting(0);
  if(!empty($_POST)){
-    
-    $username = stripslashes(trim($_POST['name']));
+    include_once "function.php";
+    //防XSS
+    //$username = stripslashes(trim($_POST['name']));
+    $username = RemoveXSS($_POST['name']);
     //$name=$_POST["name"];
     //$email=$_POST["email"];
     //$password=$_POST["password"];
@@ -86,6 +88,7 @@ error_reporting(0);
 
     $password = md5(trim($_POST['password']));
     $email = trim($_POST['email']);
+    $email = strtolower($email);
     $regtime = time();
 
     $token = md5($username.$password.$regtime); //创建用于激活识别码
@@ -94,7 +97,7 @@ error_reporting(0);
   
         
     include_once "conn.php";
-    include_once "function.php";
+    
     //$_SESSION["email"]=$_GET["email"];//邮箱
 
     mysql_query("SET NAMES utf8");

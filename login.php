@@ -19,6 +19,8 @@
 <!-- Head Navbar -->
 <?php
 include_once "php/header.php";
+echo base64_decode($_GET['pid']);
+echo base64_decode($_GET['cdetails']);
 ?>
 
 <!-- Body Main -->
@@ -27,7 +29,8 @@ include_once "php/header.php";
         <form class="form-horizontal" id="logform" role="form" action="php/login.php" method="post">
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">邮箱</label>
-
+                <input type="hidden" name="pid" value="<?php echo base64_decode($_GET['pid']);?>">
+                <input type="hidden" name="cdetails" value="<?php echo base64_decode($_GET['cdetails']);?>">
                 <div class="col-sm-7">
                     <input type="text" class="form-control" name="email" id="email" autofocus="autofocus" placeholder="邮箱">
                     <span class="help-inline help">邮箱格式不正确</span>
