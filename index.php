@@ -49,9 +49,9 @@ include_once "php/config.php";
                 <div class="panel-body">
                     <h3>在这儿发布失物招领信息哦!</h3>
                     <br/>
-                    <a href="publish.php" class="btn btn-info btn-lg btn-block" role="button">我丢宝贝啦</a>
+                    <a href="publish.php?radio=0" class="btn btn-info btn-lg btn-block" role="button">我丢宝贝啦</a>
                     <br/>
-                    <a href="publish.php" class="btn btn-info btn-lg btn-block" role="button">我捡到宝贝啦</a>
+                    <a href="publish.php?radio=1" class="btn btn-info btn-lg btn-block" role="button">我捡到宝贝啦</a>
 
                     <h3>已成功帮<span><?php echo $num_rows;?></span>件宝贝找到主人!</h3>
 

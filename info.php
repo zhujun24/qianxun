@@ -147,6 +147,11 @@ if ($ptype == 1) {
                 <button onclick="alert('已成功找到!')" class="btn btn-primary pull-right">已成功找到 !</button>
             <?php
             } else {
+
+                if($uid ==$_SESSION['uid']){
+
+
+
                 ?>
                 <form class="form-horizontal" role="form" action="php/info.php" method="post">
                     <input type="hidden" name="pid" value="<?php echo $pid;?>">
@@ -154,6 +159,11 @@ if ($ptype == 1) {
                     <button type="submit" class="btn btn-primary pull-right">成功找到？</button>
                 </form>
             <?php
+                }else{
+            ?>
+                <button class="btn btn-primary pull-right">未成功找到</button>
+            <?php
+                }
             }
             //mysql_close();
             ?>

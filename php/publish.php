@@ -73,8 +73,8 @@
 
 <?php
  //print_r($_GET);
- // print_r($_POST);
- // print_r($_FILES['uploadfile']);
+ //print_r($_POST);
+ //print_r($_FILES['uploadfile']);
  // print_r($_FILES);
  header("Content-type:text/html;charset=utf-8");
  include_once "config.php";
@@ -83,10 +83,32 @@
  //filter_arr($_POST);
 //设置上传目录
 $path = "../upload_images/";    
+// UPLOAD_ERR_OK
+// 其值为 0，没有错误发生，文件上传成功。
+// UPLOAD_ERR_INI_SIZE
+// 其值为 1，上传的文件超过了 php.ini 中 upload_max_filesize 选项限制的值。
+// UPLOAD_ERR_FORM_SIZE
+// 其值为 2，上传文件的大小超过了 HTML 表单中 MAX_FILE_SIZE 选项指定的值。
+// UPLOAD_ERR_PARTIAL
+// 其值为 3，文件只有部分被上传。
+// UPLOAD_ERR_NO_FILE
+// 其值为 4，没有文件被上传。
+// UPLOAD_ERR_NO_TMP_DIR
+// 其值为 6，找不到临时文件夹。PHP 4.3.10 和 PHP 5.0.3 引进。
+// UPLOAD_ERR_CANT_WRITE
+// 其值为 7，文件写入失败。PHP 5.1.0 引进
 
-if($_FILES['uploadfile']['error']!=4){
+if($_FILES['uploadfile']['error']==3 ||$_FILES['uploadfile']['error']==5 || $_FILES['uploadfile']['error']==6 || $_FILES['uploadfile']['error']==7){
+    //print_r($_FILES);
+    echo_message("图片上传失败！",9);
 
-    print_r($_FILES);
+}elseif($_FILES['uploadfile']['size'] > 2000000){
+    //print_r($_FILES);
+    echo_message("图片最大不超过2M,上传失败！",9);
+
+}elseif($_FILES['uploadfile']['error']==0){
+
+    //print_r($_FILES);
     //得到上传的临时文件流
     $tempFile = $_FILES['uploadfile']['tmp_name'];
     //echo $tempFile;
@@ -156,15 +178,17 @@ if($_FILES['uploadfile']['error']!=4){
         include_once "function.php";
         mysql_close();
         //echo "success";
+        //echo "images success";
         echo_message("信息发布成功！",1);
     }else{
         //echo $fileName."上传失败！";
         include_once "function.php";
         mysql_close();
-        //echo "fail";
+        //echo "images fail";
         echo_message("信息上传失败！",-1);
     }
-}else{
+}elseif($_FILES['uploadfile']['error']==4){
+    //print_r($_FILES);
     include_once "config.php";
 
     //$pitem = trim($_POST['item']);

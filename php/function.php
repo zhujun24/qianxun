@@ -24,6 +24,8 @@ function echo_message($message , $url,$pid){
     	echo"<script>alert('$message');history.go(-1);</script>";  
   	}else if($url == 8){
 		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='login.php';</script>";
+	}else if($url == 9){
+		echo "<script charset='utf-8' type='text/javascript'>alert('$message');window.location.href='../publish.php';</script>";
 	}
 }
 
