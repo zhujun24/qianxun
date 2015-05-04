@@ -9,14 +9,14 @@ include_once "php/sec.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.min.css" rel="stylesheet">
     <link href="css/zone.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="uploadify/uploadify.css"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/lib/html5shiv.min.js"></script>
+    <script src="/lib/respond.min.js"></script>
     <![endif]-->
     <!-- 图片上传 -->
     <script type="text/javascript" src="uploadify/jquery-1.7.2.min.js"></script>
@@ -483,9 +483,9 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!-- <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+ <script src="/lib/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
 <!-- <script src="js/zone.js"></script> -->
 <script src="js/zone.js"></script>
 <script src="js/bootstrap-filestyle.min.js"></script>
@@ -493,7 +493,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 
 <!-- hfutfind.com Baidu tongji analytics -->
 <script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+var _bdhmPro/lib/jquery.min.jstocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
 
