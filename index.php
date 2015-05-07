@@ -32,6 +32,8 @@ include_once "php/header.php";
 
         <p>
             <a href="introduction.php" class="btn btn-primary" role="button">阅读使用说明</a>
+            <a href="http://weibo.com/u/5038648787" class="btn btn-primary btn-success" role="button"><span
+                    class="glyphicon glyphicon-plus"></span>关注</a>
         </p>
     </div>
     <div class="row">
