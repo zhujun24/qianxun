@@ -1,0 +1,13 @@
+ALTER TABLE t_user ADD COLUMN  `getpasstime` INT( 10 ) NOT NULL comment '÷ÿ÷√√‹¬Î ±º‰'
+
+/
+resetPassword
+forgetPassword
+
+
+/php
+deal
+resetPass
+resetPassform
+send
+smtp

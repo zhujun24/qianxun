@@ -1,0 +1,4 @@
+alter table t_user add column token varchar(50) NOT NULL COMMENT '帐号激活码';
+alter table t_user add column token_exptime int(10) NOT NULL COMMENT '激活码有效期';
+alter table t_user add column status tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态,0-未激活,1-已激活';
+alter table t_user add column regtime int(10) NOT NULL COMMENT '注册时间'
