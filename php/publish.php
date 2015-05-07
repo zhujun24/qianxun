@@ -153,6 +153,7 @@ if($_FILES['uploadfile']['error']==3 ||$_FILES['uploadfile']['error']==5 || $_FI
     //$pdetails = trim($_POST['details']);
     $pdetails = stripslashes(trim($_POST['details']));
     $pdetails = strip_tags($pdetails);
+    $ptype = trim($_POST['inlineRadioOptions']);
 
     $query = 'insert into t_publish(uid,pitem,pname,plocation,ptime,pdetails,ptype,pdate) values (
     "'.$_SESSION['uid'].'","'.$pitem.'","'.$pname.'",
@@ -179,13 +180,13 @@ if($_FILES['uploadfile']['error']==3 ||$_FILES['uploadfile']['error']==5 || $_FI
         mysql_close();
         //echo "success";
         //echo "images success";
-        echo_message("信息发布成功！",1);
+        //echo_message("信息发布成功！",1);
     }else{
         //echo $fileName."上传失败！";
         include_once "function.php";
         mysql_close();
         //echo "images fail";
-        echo_message("信息上传失败！",-1);
+        //echo_message("信息上传失败！",-1);
     }
 }elseif($_FILES['uploadfile']['error']==4){
     //print_r($_FILES);
@@ -217,7 +218,7 @@ if($_FILES['uploadfile']['error']==3 ||$_FILES['uploadfile']['error']==5 || $_FI
     "'.$plocation.'","'.$ptime.'","'.$pdetails.'",
     "'.$ptype.'","'.$pdate.'")';
     mysql_query($query , $db) or die(mysql_error($db));
-    
+
     include_once "function.php";
     if(mysql_affected_rows()){
         mysql_close();

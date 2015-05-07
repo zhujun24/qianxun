@@ -92,6 +92,7 @@ error_reporting(0);
 
     $psucceed = $_POST["psucceed"];
     $uid = $_SESSION['uid'];
+    //echo $uid."xxxxxxxxxxxxxx";
     $ctime = date('Y-m-d H:i:s');
     
 
@@ -108,20 +109,23 @@ error_reporting(0);
                 if($rowsNum > 0){
                     echo "<h3>成功找到！</h3>";
                     $conne->close_conn();
-                    echo_message("成功找到..." ,5 , $pid);
+                    echo_message("成功找到..." ,5 , base64_encode($pid));
                 }else{
                     echo "修改失败！";
                     $conne->msg_error();
                     $conne->close_conn();
-                    echo_message("请重新修改..." ,5,$pid);
+                    echo_message("请重新修改..." ,5,base64_encode($pid));
                 }
             }else{
+                //echo $puid."sss".$uid;
+
                 echo "<h3>非本人无法确认成功找到！</h3>";
-                echo_message("非本人无法确认成功找到！" ,5, $pid);
+                //echo "";
+                echo_message("非本人无法确认成功找到！" ,5, base64_encode($pid));
             }    
         }else{
             echo "<h3>已成功找到！</h3>";
-            echo_message("已成功找到！",5, $pid);  
+            echo_message("已成功找到！",5, base64_encode($pid));
         }
         
     }

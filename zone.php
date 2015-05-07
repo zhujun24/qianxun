@@ -483,7 +483,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
- <script src="/lib/jquery.min.js"></script>
+<!-- -->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/lib/bootstrap.min.js"></script>
 <!-- <script src="js/zone.js"></script> -->
@@ -492,12 +492,7 @@ $arr = mysql_fetch_assoc(mysql_query("select * from t_user where uid = '".$_SESS
 
 
 <!-- hfutfind.com Baidu tongji analytics -->
-<script type="text/javascript">
-var _bdhmPro/lib/jquery.min.jstocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
-
-</script>
+<!---->
 
 </body>
 </html>

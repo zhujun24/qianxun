@@ -17,12 +17,12 @@ if (!isset($_SESSION)) {
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link href="/lib/bootstrap.min.css" rel="stylesheet">
-    <link href="css/info.css" rel="stylesheet">
+    <link href="/css/info.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="/lib/html5shiv.min.js"></script>
-    <script src="/lib/respond.min.js"></script>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -32,8 +32,10 @@ include_once "php/header.php";
 
 include_once "php/conn.php";
 mysql_query("set names 'utf8'");
-$pid = base64_decode(trim($_GET["pid"]));    
-$sql = "select * from t_publish where pid= '".$pid."' ";
+$id = base64_decode(trim($_GET['pid']));
+$id = intval($id);
+//echo $id;
+$sql = "select * from t_publish where pid= '$id' ";
 $num = $conne->getRowsNum($sql);
 if ($num >= 1)
 {
@@ -126,32 +128,16 @@ if ($ptype == 1) {
                 }
                 ?>
             </div>
-
-            
             <?php
             //include_once "php/config.php";
             $arr1 = mysql_fetch_assoc(mysql_query("select * from t_publish where pid='" . $pid . "' "));
             $psucceed = $arr1["psucceed"];
-            $uid = $arr1["uid"];
-            if($uid ==$_SESSION['uid']){
-
-            ?>
-            
-            <a href='php/deleinfo.php?id=<?php echo $pid;?>'><button class="btn btn-primary pull-right">删除信息!</button></a>
-            <a class='pull-right'>&nbsp;</a>
-            <?php
-            }
             if ($psucceed == 1) {
                 ?>
 
                 <button onclick="alert('已成功找到!')" class="btn btn-primary pull-right">已成功找到 !</button>
             <?php
             } else {
-
-                if($uid ==$_SESSION['uid']){
-
-
-
                 ?>
                 <form class="form-horizontal" role="form" action="php/info.php" method="post">
                     <input type="hidden" name="pid" value="<?php echo $pid;?>">
@@ -159,11 +145,6 @@ if ($ptype == 1) {
                     <button type="submit" class="btn btn-primary pull-right">成功找到？</button>
                 </form>
             <?php
-                }else{
-            ?>
-                <button class="btn btn-primary pull-right">未成功找到</button>
-            <?php
-                }
             }
             //mysql_close();
             ?>
@@ -190,7 +171,7 @@ if ($ptype == 1) {
 									                <h4 class='media-heading'>" . $uname . "
 									            <small>&nbsp;&nbsp;发表于" . $row['ctime'] . "</small>
 									                </h4>
-									                <p>" . $row['cdetails'] . "</p>
+									                <p>" . $row['cdetails'] . "。</p>
 									            </div>
         											</div>";
             }
@@ -206,28 +187,17 @@ if ($ptype == 1) {
         ?>
 
         <div class="media">
-            <form class="form-horizontal publish" role="form" action="php/info.php" method="post">
+            <form class="form-horizontal" role="form" action="php/info.php" method="post">
                 <input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <?php
-                            if(empty($_GET["cdetails"])){
-                        ?>
                         <textarea name="cdetails" class="form-control" rows="3" placeholder="我要说点啥……"></textarea>
-                        <?php
-                            }else{
-                            $cdetails = trim($_GET["cdetails"]);
-                        ?>
-                        <textarea name="cdetails" class="form-control" rows="3"><?php echo $cdetails;?></textarea>
-                        <?
-                            }
-                        ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <button id="publish" class="btn btn-info">发表评论</button>
+                        <button type="submit" class="btn btn-info">发表评论</button>
                     </div>
                 </div>
             </form>
@@ -243,10 +213,10 @@ include_once "php/footer.php";
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/lib/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="/lib/bootstrap.min.js"></script>
-<script src="js/info.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <!-- hfutfind.com Baidu tongji analytics -->
 <script type="text/javascript">
     var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
