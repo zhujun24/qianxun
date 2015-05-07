@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.min.css" rel="stylesheet">
     <link href="css/reg.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/lib/html5shiv.min.js"></script>
+    <script src="/lib/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -102,7 +102,7 @@ include_once "php/header.php";
                     <div class="col-sm-offset-2 col-sm-3">
                         <button id="reg" type="button" class="btn btn-primary"> 立即注册</button>
 
-                        <a style="margin-left:10px;" class="btn btn-default" role="button" href="introduction.html">阅读使用说明</a>
+                        <a style="margin-left:10px;" class="btn btn-default" role="button" href="introduction.php">阅读使用说明</a>
                     </div>
                 </div>
             </form>
@@ -111,15 +111,24 @@ include_once "php/header.php";
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.html">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "php/footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="/lib/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
 <script src="js/reg.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
 </html>

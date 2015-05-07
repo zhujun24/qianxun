@@ -1,6 +1,11 @@
 <?php
-        session_start();
-    ?>
+	error_reporting(0);
+	include_once "../php/function.php";
+	if(!isset($_SESSION)){ session_start();};
+	if(empty($_SESSION['uid']) || $_SESSION["power"]!=9){
+		echo_message("权限不足",1);
+	}
+?>
 <!DOCTYPE HTML>
 <html>
 <head>

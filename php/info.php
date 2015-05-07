@@ -11,13 +11,13 @@ error_reporting(0);
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/lib/html5shiv.min.js"></script>
+    <script src="/lib/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -82,16 +82,21 @@ error_reporting(0);
  if(!empty($_POST)){
     
     include_once "config.php";
+    include_once "function.php";
     $pid=$_POST["pid"];
-    $cdetails=$_POST["cdetails"];
+    
+    //过滤敏感词
+    filter_word(trim($_POST["cdetails"]),$pid);
+    $cdetails=trim($_POST["cdetails"]);
+    $cdetails=RemoveXSS($cdetails);
+
     $psucceed = $_POST["psucceed"];
     $uid = $_SESSION['uid'];
+    //echo $uid."xxxxxxxxxxxxxx";
     $ctime = date('Y-m-d H:i:s');
-    //echo $pid.$cdetails.$uid.$ctime;
     
-    include_once "function.php";
-    //$_SESSION["email"]=$_GET["email"];//邮箱
-    
+
+    //成功找回
     if(!empty($psucceed)){
         include_once "config.php";
         $arr = mysql_fetch_assoc(mysql_query("select * from t_publish where pid='".$pid."' "));
@@ -104,40 +109,69 @@ error_reporting(0);
                 if($rowsNum > 0){
                     echo "<h3>成功找到！</h3>";
                     $conne->close_conn();
-                    echo_message("成功找到..." ,5 , $pid);
+                    echo_message("成功找到..." ,5 , base64_encode($pid));
                 }else{
                     echo "修改失败！";
                     $conne->msg_error();
                     $conne->close_conn();
-                    echo_message("请重新修改..." ,5,$pid);
+                    echo_message("请重新修改..." ,5,base64_encode($pid));
                 }
             }else{
+                //echo $puid."sss".$uid;
+
                 echo "<h3>非本人无法确认成功找到！</h3>";
-                echo_message("非本人无法确认成功找到！" ,5, $pid);
+                //echo "";
+                echo_message("非本人无法确认成功找到！" ,5, base64_encode($pid));
             }    
         }else{
             echo "<h3>已成功找到！</h3>";
-            echo_message("已成功找到！",5, $pid);  
+            echo_message("已成功找到！",5, base64_encode($pid));
         }
         
-    }else{
-        include_once "conn.php";    
-        $insql = "insert into t_comment(pid,uid,ctime,cdetails) values('$pid','$uid','$ctime','$cdetails') ";
-        $conne = new opmysql();
-        //执行插入
-        $rowsNum = $conne->uidRst($insql);
-        if($rowsNum)
-        {
+    }
+    else{    
+        //评论验证
+        if(empty($cdetails)){
+            //echo_message("评论内容不能为空！",5, $pid);   
+            echo "<script type='text/javascript'>alert('评论内容不能为空！');window.history.go(-1)</script>";
+        }
+        else if(strlen($cdetails) >= "50"){
+            //echo_message("评论内容不能大于50字！",5, $pid);   
+            echo "<script type='text/javascript'>alert('评论内容不能大于50字！');window.history.go(-1)</script>";
+        }else if(empty($uid)){
+            //echo "<script type='text/javascript'>alert('注册后才能评论！');window.history.go(-1)</script>";
+            //$cdetails = urlencode($cdetails);
+            //$details = urlencode($_POST["cdetails"]);
+            //echo $details;
+            //echo $cdetails;
+            
+            //$url = base64_encode("pid=$pid&cdetails=$cdetails");
+            //echo $url."<br>";
+            //echo base64_decode($url);
+            $pid = base64_encode($pid);
+            $cdetails = base64_encode($cdetails);
+            echo "<script charset='utf-8' type='text/javascript'>alert('登录后才能评论！')</script>";
+            echo "<script>window.location.href='../login.php?pid=$pid&cdetails=$cdetails';</script>";
+        }
+        else{
+            include_once "conn.php";
+            $insql = "insert into t_comment(pid,uid,ctime,cdetails) values('$pid','$uid','$ctime','$cdetails') ";
+            $conne = new opmysql();
+            //执行插入
+            $rowsNum = $conne->uidRst($insql);
+            if($rowsNum)
+            {
+                $conne->close_conn();
+                echo_message("评论成功！",5, $pid);   
+            }else {
+                //出错
+                //echo $conne->msg_error();   
+            }
+
             $conne->close_conn();
-            echo_message("评论成功！",5, $pid);   
-        }else {
-            //出错
-            //echo $conne->msg_error();   
         }
 
-
         
-        $conne->close_conn();
     }
 
 }
@@ -146,15 +180,24 @@ error_reporting(0);
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.html">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="/lib/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
 <script src="../js/reg.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
 </html>

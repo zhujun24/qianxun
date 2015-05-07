@@ -1,10 +1,9 @@
-
-<?php
+﻿<?php
 error_reporting(0);
 include_once "php/function.php";
 if(!isset($_SESSION)){ session_start();};
 if(empty($_SESSION['uid'])){
-    echo_message("请先注册登录后，才可以发布信息！",3);
+    echo_message("请先注册登录后，才可以发布信息！",8);
 }
 ?>
 <!DOCTYPE html>
@@ -15,15 +14,14 @@ if(empty($_SESSION['uid'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网发布--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <!--<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">-->
     <link href="css/publish.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/lib/html5shiv.min.js"></script>
+    <script src="/lib/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -77,23 +75,27 @@ include_once "php/header.php";
                         <div class="form-group has-feedback">
                             <label for="timer" class="col-lg-4 control-label">捡到&丢失时间*</label>
 
-                            <div class="input-group date form_datetime col-lg-8" data-date="2014-01-01T00:00:00Z"
-                                 data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
-                                <input id="timer" 
-                                name="time" 
-                                class="form-control" size="16" type="text" value="" readonly>
+                            <!-- <div class="input-group date form_datetime col-lg-7" data-date="2015-01-01T00:00:00Z"data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1">
+                                <input id="timer" name="time" 
+                                class="form-control" size="16" type="text" value="" readonly style="width: 234px;margin-left: 15px;"> -->
+                            <div class="input-group date form_datetime col-lg-7" data-date="" data-link-field="dtp_input1">
+                                <input id="timer" name="time" class="form-control" size="16" 
+                            type="text" value="" readonly style="width: 234px;margin-left: 15px;">
+
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                             </div>
                             <input type="hidden" id="dtp_input1" value="">
                         </div>
                         <div class="form-group">
-                            <label for="doc" class="col-lg-4 control-label">物品图片*</label>
+                            <!--label for="doc" class="col-lg-4 control-label">物品图片*</label-->
+                            <label for="doc" class="col-lg-4 control-label">物品图片&nbsp;&nbsp;<p>(若不填，则请尽可能给出详细描述)</p></label>
 
                             <div class="col-lg-8">
                                 <input type="file" name="uploadfile" id="doc" onchange="javascript:setImagePreview();"
                                        class="form-control filestyle" data-icon="false" data-buttonText="上传图片"
                                        data-buttonName="btn-primary">
                                 <span class="help-inline"></span>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="20000" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -121,6 +123,10 @@ include_once "php/header.php";
                             <label class="col-lg-4 control-label">发布信息类别*</label>
 
                             <div class="col-lg-8">
+                                <?php
+                                if(trim($_GET['radio'])==1){
+
+                                ?>
                                 <label class="radio-inline" title="我捡到东西了，希望失主能看到">
                                     <input type="radio" checked name="inlineRadioOptions" id="inlineRadio1"
                                            value="1">招领信息
@@ -128,6 +134,20 @@ include_once "php/header.php";
                                 <label class="radio-inline" title="我丢失东西了，希望捡到的好心人能看到">
                                     <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0">失物信息
                                 </label>
+                                <?php
+                                }else{
+                                ?>
+                                <label class="radio-inline" title="我捡到东西了，希望失主能看到">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                           value="1">招领信息
+                                </label>
+                                <label class="radio-inline" title="我丢失东西了，希望捡到的好心人能看到">
+                                    <input type="radio" checked name="inlineRadioOptions" id="inlineRadio2" value="0">失物信息
+                                </label>
+
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="form-group">
@@ -147,19 +167,28 @@ include_once "php/header.php";
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.php">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "php/footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="/lib/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="js/bootstrap-filestyle.min.js"></script>
 <script src="js/previewImage.js"></script>
 <script src="js/publish.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
 </html>

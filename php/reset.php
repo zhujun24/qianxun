@@ -10,13 +10,13 @@ if(!isset($_SESSION)){ session_start(); };
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>千寻网--合肥工业大学失物招领</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.min.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/lib/html5shiv.min.js"></script>
+    <script src="/lib/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -66,57 +66,93 @@ if(!isset($_SESSION)){ session_start(); };
     </div>
 </nav>
 <!-- Body Main -->
-<div class="container">
-<form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php">
+<div class="container" style="text-align:center">
+<!-- <form class="form-horizontal col-sm-4 col-sm-offset-4" role="form" id="forget" action="forget.php"> -->
 <?php
+// echo "XXX";
+// echo $_POST['pass']."___".$_POST['password'];
+// echo $_POST['password1']."___".$_POST['password2'];
+
 if(!empty($_POST)){
-    $pass=$_POST["pass"];
-    $password=$_POST["password"];
-    $password1=$_POST["password1"];
-    $password2=$_POST["password2"];
-    $uid=$_POST["uid"];
-    
-    if( ($password==$pass) && ($password1==$password2)){
-        include_once "config.php";
-        include_once "conn.php";
-        include_once "function.php";
-        
-        $sql="update t_user set  upwd = '".$password1."'  where uid = '".$uid."' ";
+    //$pass=$_POST["pass"];
+    //$password=$_POST["password"];
+    $pass = $_POST['pass'];
+    $password = md5(trim($_POST['password']));
 
-        
-        $rowsNum = $conne->uidRst($sql);
-        if($rowsNum > 0){
-            echo "<h3>修改成功！</h3>";
-            $conne->close_conn();
-            echo_message("修改成功..." ,4);
-        }else{
-            echo "修改失败！";
-            $conne->msg_error();
-            $conne->close_conn();
-            echo_message("请重新修改..." ,4);
-        }
+    //密码前12位
+    $pass = substr($pass , 0 , 12);
+    $password = substr($password , 0 , 12);
+
+    // echo "<br>XXX";
+    // echo $pass."___".$password;
 
 
+    include_once "function.php";
+
+    if($pass != $password){
+        echo_message("原密码错误，请重新修改..." ,4);
     }
-    
 
+    
+    // $password1=$_POST["password1"];
+    // $password2=$_POST["password2"];
+
+    $password1 = md5(trim($_POST['password1']));
+    $password2 = md5(trim($_POST['password2']));
+    //密码前12位
+    $password1 = substr($password1 , 0 , 12);
+    $password2 = substr($password2 , 0 , 12);
+
+    $uid=$_POST["uid"];
+
+    
+    include_once "config.php";
+    include_once "conn.php";
+    
+    
+    $sql="update t_user set  upwd = '".$password1."'  where uid = '".$uid."' ";
+    
+    $rowsNum = $conne->uidRst($sql);
+    if($rowsNum > 0){
+        echo "<h3>修改成功！</h3>";
+        $conne->close_conn();
+        echo_message("修改成功..." ,4);
+    }else{
+
+        echo "新密码与原密码一致！";
+        $conne->msg_error();
+        $conne->close_conn();
+        echo_message("请重新修改..." ,4);
+    }
+
+}else{
+    echo_message("请重新修改..." ,4);
 }     
 
 
 ?>
-</form>
+<!-- </form> -->
 </div>
 
 <!-- Footer -->
-<div class="container-fluid" id="bottom">
-    <p>Copyright 2014-? <span><a href="index.html">www.hfutfind.com</a></span> 版权所有 合肥工业大学千寻网</p>
-</div>
+<?php
+    include_once "footer.php";
+?>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="/lib/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/lib/bootstrap.min.js"></script>
 <script src="../js/reg.js"></script>
+
+<!-- hfutfind.com Baidu tongji analytics -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ef7e98a67ec1cfb8f1b6dcee50de923' type='text/javascript'%3E%3C/script%3E"));
+
+</script>
+
 </body>
 </html>

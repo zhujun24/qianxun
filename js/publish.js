@@ -5,11 +5,12 @@ $(document).ready(function (){
         language:  'zh-CN',
         weekStart: 1,
         todayBtn:  1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        startView: 4,
+        minView: 2,
+        forceParse: false
     });
 
     // 发布表单的验证
