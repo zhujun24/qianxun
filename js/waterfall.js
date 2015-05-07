@@ -1,31 +1,24 @@
 $(window).scroll(function () {
     //Ajax加载后返回的数据
     function waterfall(num) {
-<<<<<<< HEAD
-        $('.center').css("display","block");
-        var url = 'http://zhujun.esy.es/waterfall.json';
-=======
         $('.center').html("玩命加载中……");
-        var url = 'php/waterfall.json';
->>>>>>> 78d6ba16aa8a64366109ab106b3052eadc1ea66a
+        //var url = 'php/waterfall.json';
+        var url = 'php/json_publish.php';
         var newDOM = '';
         $.ajax({
             url: url,
             dataType: "json",
             success: function (data) {
                 $.each(data,function (index,item){
-                    if(item.imgUrl){
-                        newDOM += '<div class="media"><a class="pull-left" href="#"><img class="media-object" src="'+item.avatar+'" alt="头像"></a><div class="media-body"><h4 class="media-heading">'+item.auther +'<small>&nbsp;&nbsp;'+item.time+'</small></h4>'+item.content+'<a href="#" class="thumbnail"><img src="'+item.imgUrl+'" data-src="holder.js/300x300" alt="物品图片"></a></div><a href="info.html" class="btn btn-primary pull-right" role="button">查看详情</a></div>';
+                    if(item.pimage){
+                        //"'+item.avatar+'"
+                        newDOM += '<div class="media"><a class="pull-left" href="#"><img class="media-object" src="images/head_photo.png" alt="头像"></a><div class="media-body"><h4 class="media-heading">'+item.uid +'<small>&nbsp;&nbsp;'+item.ptime+'</small></h4>'+item.pdetails+'<a href="#" class="thumbnail"><img src="upload_images/'+item.pimage+'" data-src="holder.js/300x300" alt="物品图片"></a></div><a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a></div>';
                     } else {
-                        newDOM += '<div class="media"><a class="pull-left" href="#"><img class="media-object" src="' + item.avatar + '" alt="头像"></a><div class="media-body"><h4 class="media-heading">' + item.auther + '<small>&nbsp;&nbsp;' + item.time + '</small></h4>' + item.content + '</a></div><a href="info.html" class="btn btn-primary pull-right" role="button">查看详情</a></div>';
+                        newDOM += '<div class="media"><a class="pull-left" href="#"><img class="media-object" src="images/head_photo.png" alt="头像"></a><div class="media-body"><h4 class="media-heading">' + item.uid + '<small>&nbsp;&nbsp;' + item.ptime + '</small></h4>' + item.pdetails + '</a></div><a href="info.php" class="btn btn-primary pull-right" role="button">查看详情</a></div>';
                     }
                 });
                 $('.media').last().after(newDOM);
-<<<<<<< HEAD
-                $('.center').css("display","none");
-=======
                 $('.center').html("");
->>>>>>> 78d6ba16aa8a64366109ab106b3052eadc1ea66a
             }
         });
     }
